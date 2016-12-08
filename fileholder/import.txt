@@ -1,0 +1,2180 @@
+-- Table structure for table `data_absensi` 
+DROP TABLE IF EXISTS `data_absensi`;
+
+CREATE TABLE `data_absensi` (
+  `absensi_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `pegawai_id` smallint(6) NOT NULL,
+  `absensi_tanggal` date NOT NULL,
+  `absensi_jam` time NOT NULL,
+  `absensi_keterangan` varchar(255) NOT NULL,
+  `absensi_tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`absensi_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table structure for table `data_akun` 
+DROP TABLE IF EXISTS `data_akun`;
+
+CREATE TABLE `data_akun` (
+  `akun_id` int(11) NOT NULL AUTO_INCREMENT,
+  `akun_kode` varchar(256) NOT NULL,
+  `akun_nama` varchar(256) NOT NULL,
+  `akun_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(11) NOT NULL,
+  `is_permanent` tinyint(11) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`akun_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_akun` 
+insert into `data_akun` values
+(1, '8200', 'Kas', 'arus kas', '0000-00-00', '2015-10-21 10:53:20', 0, 1, 1), 
+(2, '8201', 'Giro', '', '0000-00-00', '2015-10-14 10:12:35', 0, 1, 1), 
+(3, '8202', 'Cash', '', '0000-00-00', '2015-10-14 10:12:40', 0, 1, 1), 
+(4, '8203', 'Rekening', '', '0000-00-00', '2015-10-14 10:12:42', 0, 1, 1), 
+(5, '2001', 'Hutang Usaha', 'hutang Pembelian', '0000-00-00', '2015-10-22 09:04:36', 0, 1, 1), 
+(6, '7900', 'Hutang BG', 'hutang Dibayaar Giro', '0000-00-00', '2015-10-22 09:04:36', 0, 1, 1), 
+(7, '1001', 'Piutang Usaha', 'Piutang Konsumen Penjualan', '0000-00-00', '2015-10-22 15:20:13', 0, 1, 1), 
+(8, '2900', 'Piutang BG', 'Piutang Dibayar Giro', '0000-00-00', '2015-10-22 15:20:53', 0, 1, 1);
+
+-- Table structure for table `data_buku_besar` 
+DROP TABLE IF EXISTS `data_buku_besar`;
+
+CREATE TABLE `data_buku_besar` (
+  `buku_besar_id` int(11) NOT NULL AUTO_INCREMENT,
+  `buku_besar_nama` varchar(256) NOT NULL,
+  `buku_besar_saldo` float NOT NULL,
+  `buku_besar_periode_awal` varchar(100) NOT NULL,
+  `buku_besar_periode_akhir` varchar(100) NOT NULL,
+  `buku_besar_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`buku_besar_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_buku_besar` 
+insert into `data_buku_besar` values
+(1, 'Buku 2015', '0', '2015-01-01', '2015-12-31', '', '0000-00-00', '2015-10-12 05:07:51', 0, 0, 1), 
+(2, 'test', '0', '2015-10-12', '2015-10-12', 'test', '0000-00-00', '2015-10-12 09:10:45', 1, 0, 1), 
+(3, 'Buku', '0', '2015-10-22', '2015-10-22', '', '0000-00-00', '2015-10-22 08:14:50', 1, 0, 1), 
+(4, 'Buku s', '0', '2015-10-22', '2015-10-22', '', '0000-00-00', '2015-10-22 03:20:35', 0, 0, 1);
+
+-- Table structure for table `data_cabang` 
+DROP TABLE IF EXISTS `data_cabang`;
+
+CREATE TABLE `data_cabang` (
+  `cabang_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `cabang_nama` varchar(255) NOT NULL,
+  `cabang_alamat` varchar(255) NOT NULL,
+  `cabang_telepon_1` varchar(20) NOT NULL,
+  `cabang_telepon_2` varchar(20) NOT NULL,
+  `cabang_fax` varchar(255) NOT NULL,
+  `cabang_email` varchar(255) NOT NULL,
+  `cabang_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`cabang_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_cabang` 
+insert into `data_cabang` values
+(1, 'purwokerto', '-', '-', '-', '-', '123@456.com', '', '0000-00-00', '2015-12-31 06:57:24', 1, 0, 0), 
+(2, 'Yogya', '-', '-', '-', '-', 'yogya@d.com', '', '0000-00-00', '2015-12-31 06:59:45', 1, 0, 0), 
+(3, 'aaaaaaaaaa', 's', 's', 's', 's', 'sd@saf.com', 's', '2015-12-15', '2016-01-01 00:57:05', 1, 1, 0), 
+(4, 'cab 1', 'q', 'q', 'q', 'q', 'q@gmail.com', '', '2015-12-28', '2015-12-28 08:23:18', 1, 0, 0);
+
+-- Table structure for table `data_coverage` 
+DROP TABLE IF EXISTS `data_coverage`;
+
+CREATE TABLE `data_coverage` (
+  `coverage_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pegawai_id` smallint(6) NOT NULL,
+  `coverage_nama` varchar(100) NOT NULL,
+  `coverage_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` int(11) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`coverage_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_coverage` 
+insert into `data_coverage` values
+(5, 5, 'DIY', '', '2015-12-23', '2015-12-23 05:04:45', 1, 0, 0), 
+(6, 6, 'Magelang', '', '2015-12-28', '2015-12-29 08:45:37', 1, 1, 0), 
+(7, 0, 'Purwokerto', 'baru', '2015-12-29', '2015-12-29 08:46:08', 1, 1, 0), 
+(8, 0, 'Jawa Tengah', '', '2015-12-29', '2015-12-29 02:46:20', 1, 0, 0), 
+(9, 0, 'aaaaa', '', '2015-12-31', '2016-01-01 01:03:05', 1, 1, 0);
+
+-- Table structure for table `data_coverage_detail` 
+DROP TABLE IF EXISTS `data_coverage_detail`;
+
+CREATE TABLE `data_coverage_detail` (
+  `coverage_detail_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `coverage_id` smallint(6) NOT NULL,
+  `coverage_detail_kota` varchar(50) NOT NULL,
+  `coverage_detail_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`coverage_detail_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_coverage_detail` 
+insert into `data_coverage_detail` values
+(6, 5, 'Bantul', '', '2015-12-29', '2015-12-29 02:42:10', 1, 0, 0), 
+(8, 8, 'Magelang', '', '2015-12-29', '2015-12-29 02:46:44', 1, 0, 0), 
+(9, 8, 'Semarang', '', '2015-12-29', '2015-12-29 02:47:12', 1, 0, 0), 
+(10, 8, 'tes', '', '2015-12-29', '2015-12-29 08:47:27', 1, 1, 0), 
+(11, 9, 'aaaaa', '', '2015-12-31', '2016-01-01 01:02:48', 1, 1, 0);
+
+-- Table structure for table `data_divisi` 
+DROP TABLE IF EXISTS `data_divisi`;
+
+CREATE TABLE `data_divisi` (
+  `divisi_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `divisi_nama` varchar(30) NOT NULL,
+  `divisi_keterangan` varchar(50) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`divisi_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_divisi` 
+insert into `data_divisi` values
+(1, 'Kantor', '', '0000-00-00', '2015-11-09 02:14:07', 1, 0, 0), 
+(2, 'Pabrik', '', '0000-00-00', '2015-11-09 02:14:31', 1, 0, 0), 
+(3, 'Gudang', '', '0000-00-00', '2015-11-09 02:14:39', 1, 0, 0), 
+(4, 'Administrator', '', '0000-00-00', '2015-11-09 02:21:56', 1, 0, 0), 
+(5, 'tess', 'tes', '0000-00-00', '2015-12-08 09:18:50', 1, 1, 0), 
+(6, 'Outlet', '', '2015-12-15', '2015-12-15 04:12:26', 1, 0, 0), 
+(7, 'tes divisi', '', '2015-12-28', '2015-12-31 22:49:38', 1, 1, 0), 
+(8, 'aaaaaaaa', '', '2015-12-31', '2015-12-31 22:48:35', 1, 1, 0);
+
+-- Table structure for table `data_gudang` 
+DROP TABLE IF EXISTS `data_gudang`;
+
+CREATE TABLE `data_gudang` (
+  `gudang_id` int(11) NOT NULL AUTO_INCREMENT,
+  `gudang_nama` varchar(200) NOT NULL,
+  `gudang_keterangan` varchar(255) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`gudang_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_gudang` 
+insert into `data_gudang` values
+(1, 'Gudang 1', '', '2015-11-09 07:19:29', 0, 0, 1), 
+(2, 'Gudang 2', '', '2015-11-09 07:19:41', 0, 0, 1), 
+(4, 'Gudang Pusat', '', '2015-12-14 13:33:11', 0, 1, 1);
+
+-- Table structure for table `data_jurnal` 
+DROP TABLE IF EXISTS `data_jurnal`;
+
+CREATE TABLE `data_jurnal` (
+  `jurnal_id` int(11) NOT NULL AUTO_INCREMENT,
+  `jurnal_nama` varchar(256) NOT NULL,
+  `jurnal_saldo` float NOT NULL,
+  `jurnal_periode_awal` varchar(100) NOT NULL,
+  `jurnal_periode_akhir` varchar(100) NOT NULL,
+  `jurnal_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`jurnal_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_jurnal` 
+insert into `data_jurnal` values
+(1, 'Oktober', '0', '2015-10-01', '2015-10-31', '', '0000-00-00', '2015-10-09 10:01:22', 0, 0, 1);
+
+-- Table structure for table `data_jurnal_detail` 
+DROP TABLE IF EXISTS `data_jurnal_detail`;
+
+CREATE TABLE `data_jurnal_detail` (
+  `jurnal_id` int(11) NOT NULL AUTO_INCREMENT,
+  `akun_id` int(11) NOT NULL,
+  `reff_id` int(11) NOT NULL,
+  `jurnal_tanggal` date NOT NULL,
+  `transaksi_jenis` varchar(255) NOT NULL,
+  `jurnal_jenis` varchar(255) NOT NULL,
+  `jumlah` decimal(15,2) NOT NULL,
+  PRIMARY KEY (`jurnal_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_jurnal_detail` 
+insert into `data_jurnal_detail` values
+(27, 3, 1, '2015-11-06', 'retur', 'debit', '35000.00'), 
+(28, 3, 1, '2015-11-06', 'retur', 'kredit', '35000.00'), 
+(29, 3, 1, '2015-11-06', 'retur', 'debit', '35000.00'), 
+(30, 3, 1, '2015-11-06', 'retur', 'kredit', '35000.00');
+
+-- Table structure for table `data_kas_besar` 
+DROP TABLE IF EXISTS `data_kas_besar`;
+
+CREATE TABLE `data_kas_besar` (
+  `kas_besar_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `kas_besar_nama` varchar(255) NOT NULL,
+  `kas_besar_jenis` varchar(100) NOT NULL,
+  `kas_besar_tanggal` date NOT NULL,
+  `kas_besar_saldo` decimal(15,2) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `akun_id` int(11) NOT NULL,
+  `kas_id` int(11) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`kas_besar_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_kas_besar` 
+insert into `data_kas_besar` values
+(1, 'Kas Toko Coklat Sari', 'Kas Besar', '2015-12-22', '0.00', 5, 0, 0, '2015-12-22', '2015-12-22 05:04:40', 1, 0, 0), 
+(2, 'Sarifood Pusat', 'Kas Besar', '2015-12-22', '20.00', 4, 0, 0, '2015-12-22', '2015-12-31 07:21:43', 1, 0, 1), 
+(3, 'Kas Central', 'Kas Besar', '2015-12-22', '0.00', 1, 0, 0, '2015-12-22', '2016-01-01 01:21:12', 1, 0, 0), 
+(4, 'Kas Gudang Gula', 'Kas Besar', '2015-12-22', '0.00', 2, 0, 0, '2015-12-22', '2015-12-22 11:44:20', 1, 0, 0), 
+(5, 'Kas X', 'Kas Besar', '2015-12-28', '0.00', 5, 0, 0, '2015-12-28', '2015-12-28 10:52:17', 1, 0, 0), 
+(6, 'Kas asasd', 'Kas Besar', '2015-12-31', '0.00', 6, 0, 0, '2015-12-31', '2015-12-31 07:00:23', 1, 0, 0);
+
+-- Table structure for table `data_kas_kecil` 
+DROP TABLE IF EXISTS `data_kas_kecil`;
+
+CREATE TABLE `data_kas_kecil` (
+  `kas_kecil_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `kas_kecil_nama` varchar(100) NOT NULL,
+  `kas_kecil_jenis` varchar(255) NOT NULL,
+  `kas_kecil_tanggal` date NOT NULL,
+  `kas_kecil_saldo` decimal(15,2) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`kas_kecil_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_kas_kecil` 
+insert into `data_kas_kecil` values
+(1, 'Kas Toko Coklat Sari', 'Kas Kecil', '2015-12-22', '0.00', 5, '2015-12-22', '2015-12-22 04:56:00', 1, 0, 0), 
+(2, 'Sarifood Pusat', 'Kas Besar', '2015-12-22', '0.00', 4, '2015-12-22', '2015-12-31 07:24:46', 1, 0, 1), 
+(3, 'Kas Central', 'Kas Kecil', '2015-12-22', '0.00', 1, '2015-12-22', '2015-12-22 11:45:04', 1, 0, 0), 
+(4, 'Kas Gudang Gula', 'Kas Kecil', '2015-12-22', '0.00', 2, '2015-12-22', '2015-12-22 11:45:45', 1, 0, 0), 
+(5, 'Kas X', 'Kas Kecil', '2015-12-28', '0.00', 5, '2015-12-28', '2015-12-28 10:52:17', 1, 0, 0), 
+(6, 'Kas asasd', 'Kas Kecil', '2015-12-31', '0.00', 6, '2015-12-31', '2015-12-31 07:00:23', 1, 0, 0);
+
+-- Table structure for table `data_lokasi` 
+DROP TABLE IF EXISTS `data_lokasi`;
+
+CREATE TABLE `data_lokasi` (
+  `lokasi_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `cabang_id` smallint(6) NOT NULL,
+  `default_kode_nota` varchar(100) NOT NULL,
+  `lokasi_nama` varchar(30) NOT NULL,
+  `lokasi_jenis` varchar(15) NOT NULL,
+  `lokasi_alamat` varchar(100) NOT NULL,
+  `lokasi_telp` varchar(20) NOT NULL,
+  `lokasi_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`lokasi_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_lokasi` 
+insert into `data_lokasi` values
+(1, 1, '3', 'Toko Sari Bakery', 'Toko', 'Jl. Antah Berantah , Concat', '0293 029 392', '', '0000-00-00', '2016-01-01 01:33:12', 1, 0, 0), 
+(2, 2, '1', 'Gudang 1', 'Gudang', 'Jl Wongsodirjan', '1234', '', '0000-00-00', '2016-01-01 01:33:18', 1, 0, 0), 
+(4, 2, '2', 'Sarifood Pusat', 'Gudang', 'Jl Purwokerto ', '123456', '', '2015-12-17', '2015-12-29 11:15:17', 1, 0, 1);
+
+-- Table structure for table `data_mobil` 
+DROP TABLE IF EXISTS `data_mobil`;
+
+CREATE TABLE `data_mobil` (
+  `mobil_id` int(11) NOT NULL AUTO_INCREMENT,
+  `mobil_nama` varchar(100) NOT NULL,
+  `mobil_plat` varchar(20) NOT NULL,
+  `mobil_tanggal_stnk` date NOT NULL,
+  `mobil_kir` date NOT NULL,
+  `mobil_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`mobil_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_mobil` 
+insert into `data_mobil` values
+(3, 'Avanza', 'AA 1234  BB', '2020-04-15', '2019-11-01', '', '0000-00-00', '2015-11-09 11:19:47', 0, 0, 1), 
+(4, 'Nissan Terrano', 'AB 123 CC', '2015-12-16', '2015-12-11', '', '0000-00-00', '2015-12-10 05:51:24', 0, 0, 1), 
+(5, 'ug', 'ug', '2015-12-10', '2015-12-10', '', '0000-00-00', '2015-12-10 11:52:06', 1, 0, 1), 
+(6, 'ertiga', 'ab 123 v', '2015-12-15', '2015-12-15', '', '2015-12-15', '2015-12-15 05:17:26', 0, 0, 1), 
+(7, 'aaaaaaaaaaaaaaa', 'asdasd', '2015-12-31', '2015-12-31', '', '2015-12-31', '2016-01-01 01:06:04', 1, 0, 1);
+
+-- Table structure for table `data_pegawai` 
+DROP TABLE IF EXISTS `data_pegawai`;
+
+CREATE TABLE `data_pegawai` (
+  `pegawai_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` smallint(6) NOT NULL,
+  `divisi_id` smallint(6) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `pegawai_nama` varchar(50) NOT NULL,
+  `pegawai_no_identitas` varchar(100) NOT NULL,
+  `pegawai_alamat` varchar(255) NOT NULL,
+  `pegawai_telepon` varchar(20) NOT NULL,
+  `pegawai_tgl_masuk` date NOT NULL,
+  `pegawai_tgl_keluar` date NOT NULL,
+  `pegawai_foto` varchar(255) NOT NULL,
+  `is_aktif` tinyint(1) NOT NULL,
+  `pegawai_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NULL DEFAULT NULL,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`pegawai_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_pegawai` 
+insert into `data_pegawai` values
+(5, 1, 4, 4, 'Admin', '123', 'Admin', 'Admin', '2015-12-22', '1970-01-01', '22122015082544pas_112.jpg', 1, '', '2015-12-22', '2015-12-22 09:48:59', 1, 0, 0), 
+(6, 2, 1, 2, 'Yono', '123', 'Yono', '456', '2015-12-31', '1970-01-01', '22122015082558pas_21.jpg', 1, '', '2015-12-22', '2015-12-31 04:54:51', 1, 0, 0), 
+(7, 3, 3, 1, 'Ani', '222', 'Jl jojo', '-', '2015-12-22', '1970-01-01', '22122015093824pas_1121.jpg', 1, '', '2015-12-22', '2015-12-22 09:38:24', 1, 0, 0), 
+(9, 4, 3, 4, 'X', 'X', 'X', 'X', '2015-12-28', '1970-01-01', '', 1, '', '2015-12-28', '2015-12-28 10:21:25', 1, 1, 0);
+
+-- Table structure for table `data_pelanggan` 
+DROP TABLE IF EXISTS `data_pelanggan`;
+
+CREATE TABLE `data_pelanggan` (
+  `pelanggan_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pelanggan_kategori_id` smallint(6) NOT NULL,
+  `pegawai_id` smallint(6) NOT NULL,
+  `pelanggan_kategori_pajak` varchar(50) NOT NULL,
+  `pelanggan_kode` varchar(100) NOT NULL,
+  `pelanggan_nama_perusahaan` varchar(255) NOT NULL,
+  `pelanggan_pemilik_nama` varchar(256) NOT NULL,
+  `pelanggan_ktp` varchar(20) NOT NULL,
+  `pelanggan_telepon_1` varchar(15) NOT NULL,
+  `pelanggan_telepon_2` varchar(15) NOT NULL,
+  `pelanggan_telepon_3` varchar(15) NOT NULL,
+  `pelanggan_fax` varchar(255) NOT NULL,
+  `pelanggan_email` varchar(255) NOT NULL,
+  `pelanggan_alamat` varchar(256) NOT NULL,
+  `pelanggan_kecamatan` varchar(255) NOT NULL,
+  `pelanggan_kota` varchar(255) NOT NULL,
+  `coverage_detail_id` smallint(6) NOT NULL,
+  `pelanggan_cp` varchar(255) NOT NULL,
+  `pelanggan_no_npwp` varchar(50) NOT NULL,
+  `pelanggan_nama_npwp` varchar(100) NOT NULL,
+  `pelanggan_deposit_saldo` decimal(15,2) NOT NULL,
+  `pelanggan_termofpayment` int(11) NOT NULL,
+  `pelanggan_keterangan` varchar(256) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`pelanggan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_pelanggan` 
+insert into `data_pelanggan` values
+(9, 2, 6, 'PPH', '100.20151012.0001', 'Doni Bakery', 'Dony Purnama', '1231111918181821', '-', '-', '-', '-', '1@1.com', '-', '-', '-', 6, '-', '-', '-', '0.00', 30, '', '0000-00-00', '2015-12-29 14:30:11', 0, 0, 1), 
+(11, 5, 6, 'PPH', '100.20151012.0003', 'Ban Snack', 'Bandinda', '10010201381231203', '-', '-', '-', '-', 'ban.snack@gmail.com', '-', '-', '-', 9, '-', '-', '-', '0.00', 12, '', '0000-00-00', '2015-12-29 08:20:37', 0, 0, 1);
+
+-- Table structure for table `data_pelanggan_diskon` 
+DROP TABLE IF EXISTS `data_pelanggan_diskon`;
+
+CREATE TABLE `data_pelanggan_diskon` (
+  `pelanggan_diskon_id` int(11) NOT NULL AUTO_INCREMENT,
+  `kategori_pelanggan_id` int(11) NOT NULL,
+  `pelanggan_diskon_besar_diskon` float(12,2) NOT NULL,
+  `pelanggan_diskon_minimal_belanja` float(12,2) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`pelanggan_diskon_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table structure for table `data_pelanggan_kategori` 
+DROP TABLE IF EXISTS `data_pelanggan_kategori`;
+
+CREATE TABLE `data_pelanggan_kategori` (
+  `pelanggan_kategori_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pelanggan_kategori_nama` varchar(255) NOT NULL,
+  `pelanggan_kategori_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`pelanggan_kategori_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_pelanggan_kategori` 
+insert into `data_pelanggan_kategori` values
+(2, 'Grosir', '\r\n', '0000-00-00', '2015-10-23 10:12:23', 0, 0, 1), 
+(5, 'Eceran', '', '0000-00-00', '2015-10-12 04:47:19', 0, 0, 1), 
+(9, 'Lusinan', '', '0000-00-00', '2015-10-23 10:12:11', 0, 0, 1), 
+(10, 'Distributor', '', '0000-00-00', '2015-10-23 15:26:35', 1, 0, 1), 
+(13, 'aaaaaaaaaaaa', '', '0000-00-00', '2016-01-01 00:56:28', 1, 0, 1), 
+(14, 'a', '', '2015-12-15', '2015-12-16 16:55:00', 1, 0, 1), 
+(15, 'coba', '', '2015-12-15', '2015-12-15 04:59:13', 0, 0, 1), 
+(16, 'seller', '', '2015-12-28', '2015-12-28 08:22:41', 0, 0, 1);
+
+-- Table structure for table `data_produk` 
+DROP TABLE IF EXISTS `data_produk`;
+
+CREATE TABLE `data_produk` (
+  `produk_id` int(11) NOT NULL AUTO_INCREMENT,
+  `produk_kategori_id` int(11) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
+  `produk_nama` varchar(256) NOT NULL,
+  `produk_kode` varchar(256) NOT NULL,
+  `produk_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`produk_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk` 
+insert into `data_produk` values
+(1, 12, 0, 'FILLING CHOCO V (10KG)', '200001', '', '2015-12-31', '2015-12-31 05:22:58', 0, 0, 1), 
+(2, 12, 0, 'FILLING CHOCO 7 (10KG)', '200002', '', '2015-12-31', '2015-12-31 05:36:58', 0, 0, 1), 
+(3, 12, 0, 'FILLING CHOCO JAGUAR (10KG)', '200003', '', '2015-12-31', '2015-12-31 23:48:41', 0, 0, 1), 
+(4, 12, 0, 'FILLING CHOCO TATA (10KG)', '200004', '', '2015-12-31', '2015-12-31 05:53:19', 0, 0, 1), 
+(5, 12, 0, 'FILLING CHOCO MELT PWT (10KG)', '200005', '', '2015-12-31', '2015-12-31 05:54:33', 0, 0, 1), 
+(6, 12, 0, 'FILLING CHOCO PREMIUM (10KG)', '200006', '', '2015-12-31', '2015-12-31 05:55:31', 0, 0, 1), 
+(7, 12, 0, 'FILLING WISLAKER KUNING-MANIS (10KG)', '200015', '', '2015-12-31', '2015-12-31 05:56:21', 0, 0, 1), 
+(8, 12, 0, 'FILLING COCONUT V (10KG)', '200020', '', '2015-12-31', '2015-12-31 05:57:11', 0, 0, 1), 
+(9, 13, 0, 'GULA HALUS (10KG)', '200100', '', '2015-12-31', '2015-12-31 06:04:03', 0, 0, 1), 
+(10, 13, 0, 'GULA HALUS REPACK (250GRx40)', '200101', '', '2015-12-31', '2015-12-31 06:04:50', 0, 0, 1), 
+(11, 13, 0, 'GULA REPACK SABLON (250GRx40)', '200102', '', '2015-12-31', '2015-12-31 06:25:26', 0, 0, 1), 
+(12, 13, 0, 'GULA LOS (25KG)', '200103', '', '2015-12-31', '2015-12-31 06:28:13', 0, 0, 1), 
+(13, 13, 0, 'GULA LOS (50KG)', '200104', '', '2015-12-31', '2015-12-31 06:28:59', 0, 0, 1), 
+(14, 8, 0, 'COKLAT N6 (25KG)', '200201', '', '2015-12-31', '2015-12-31 06:32:06', 0, 0, 1), 
+(15, 8, 0, 'COKLAT BUBUK N65 (25KG)', '200202', '', '2015-12-31', '2015-12-31 06:32:52', 0, 0, 1), 
+(16, 14, 0, 'MESES FIFI POLOS (12,5KG)', '200301', '', '2015-12-31', '2015-12-31 06:37:47', 0, 0, 1), 
+(17, 14, 0, 'MESES APIK COKLAT (12Kg)', '200302', '', '2015-12-31', '2015-12-31 06:39:32', 0, 0, 1), 
+(18, 14, 0, 'MESES APIK WTC (12Kg)', '200303', '', '2015-12-31', '2015-12-31 06:40:14', 0, 0, 1), 
+(19, 15, 0, 'SELAI SEVEN STRAWBERRY (10KG)', '200401', '', '2015-12-31', '2015-12-31 06:41:15', 0, 0, 1), 
+(20, 15, 0, 'SELAI SEVEN BLUEBERRY (10KG)', '200402', '', '2015-12-31', '2015-12-31 06:42:02', 0, 0, 1), 
+(21, 15, 0, 'SELAI SEVEN PINEAPPLE (10KG)', '200403', '', '2015-12-31', '2015-12-31 06:45:27', 0, 0, 1), 
+(22, 15, 0, 'SELAI SEVEN MELON (10KG)', '200404', '', '2015-12-31', '2015-12-31 06:47:16', 0, 0, 1), 
+(23, 15, 0, 'SELAI HAZEL STRAWBERRY (10KG)', '200406', '', '2015-12-31', '2015-12-31 06:48:22', 0, 0, 1);
+
+-- Table structure for table `data_produk_detail` 
+DROP TABLE IF EXISTS `data_produk_detail`;
+
+CREATE TABLE `data_produk_detail` (
+  `produk_detail_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `produk_id` smallint(6) NOT NULL,
+  `produk_detail_kode` varchar(50) NOT NULL,
+  `produk_detail_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`produk_detail_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk_detail` 
+insert into `data_produk_detail` values
+(1, 1, '200001', '', '0000-00-00', '2015-12-31 05:32:13', 1, 0, 0), 
+(2, 2, '200002', '', '0000-00-00', '2015-12-31 05:47:35', 1, 0, 0), 
+(3, 3, '200003', '', '0000-00-00', '2015-12-31 05:51:39', 1, 0, 0), 
+(4, 4, '200004', '', '0000-00-00', '2015-12-31 05:52:54', 1, 0, 0), 
+(5, 5, '200005', '', '0000-00-00', '2015-12-31 05:54:50', 1, 0, 0), 
+(6, 6, '200006', '', '0000-00-00', '2015-12-31 05:55:47', 1, 0, 0), 
+(7, 7, '200015', '', '0000-00-00', '2015-12-31 05:56:37', 1, 0, 0), 
+(8, 8, '200020', '', '0000-00-00', '2015-12-31 05:57:36', 1, 0, 0), 
+(9, 9, '200100', '', '0000-00-00', '2015-12-31 06:04:20', 1, 0, 0), 
+(10, 10, '200101', '', '0000-00-00', '2015-12-31 06:24:55', 1, 0, 0), 
+(12, 11, '200102', '', '0000-00-00', '2015-12-31 06:27:43', 1, 0, 0), 
+(13, 12, '200103', '', '0000-00-00', '2015-12-31 06:28:31', 1, 0, 0), 
+(14, 13, '200104', '', '0000-00-00', '2015-12-31 06:29:15', 1, 0, 0), 
+(15, 14, '200201', '', '0000-00-00', '2015-12-31 06:32:22', 1, 0, 0), 
+(16, 15, '200202', '', '0000-00-00', '2015-12-31 06:33:09', 1, 0, 0), 
+(17, 16, '200301', '', '0000-00-00', '2015-12-31 06:38:43', 1, 0, 0), 
+(18, 17, '200302', '', '0000-00-00', '2015-12-31 06:39:47', 1, 0, 0), 
+(19, 18, '200303', '', '0000-00-00', '2015-12-31 06:40:32', 1, 0, 0), 
+(20, 19, '200401', '', '0000-00-00', '2015-12-31 06:41:33', 1, 0, 0), 
+(21, 20, '200402', '', '0000-00-00', '2015-12-31 06:42:16', 1, 0, 0), 
+(22, 21, '200403', '', '0000-00-00', '2015-12-31 06:45:44', 1, 0, 0), 
+(23, 22, '200404', '', '0000-00-00', '2015-12-31 06:47:44', 1, 0, 0), 
+(24, 23, '200406', '', '0000-00-00', '2015-12-31 06:48:37', 1, 0, 0);
+
+-- Table structure for table `data_produk_detail_satuan` 
+DROP TABLE IF EXISTS `data_produk_detail_satuan`;
+
+CREATE TABLE `data_produk_detail_satuan` (
+  `detail_satuan_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `produk_detail_id` smallint(6) NOT NULL,
+  `detail_satuan_kode` varchar(100) NOT NULL,
+  `satuan_id` smallint(6) NOT NULL,
+  `detail_satuan_faktor` float(11,2) NOT NULL,
+  `detail_satuan_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`detail_satuan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk_detail_satuan` 
+insert into `data_produk_detail_satuan` values
+(1, 1, '200001.0001', 7, '10.00', '', '0000-00-00', '2016-01-01 00:10:38', 1, 0, 0), 
+(2, 1, '200001.0002', 14, '1.00', '', '0000-00-00', '2016-01-01 00:10:40', 1, 0, 0), 
+(4, 2, '200002.0002', 14, '1.00', '', '0000-00-00', '2016-01-01 00:10:42', 1, 0, 0), 
+(5, 3, '200003.0001', 7, '10.00', '', '0000-00-00', '2016-01-01 00:10:43', 1, 0, 0), 
+(6, 3, '200003.0002', 14, '1.00', '', '0000-00-00', '2016-01-01 00:10:44', 1, 0, 0), 
+(7, 4, '200004.0001', 7, '10.00', '', '0000-00-00', '2016-01-01 00:10:46', 1, 0, 0), 
+(8, 4, '200004.0002', 14, '1.00', '', '0000-00-00', '2016-01-01 00:10:47', 1, 0, 0), 
+(9, 5, '200005.0001', 7, '10.00', '', '0000-00-00', '2016-01-01 00:10:48', 1, 0, 0), 
+(10, 5, '200005.0002', 14, '1.00', '', '0000-00-00', '2016-01-01 00:10:49', 1, 0, 0), 
+(11, 6, '200006.0001', 7, '10.00', '', '0000-00-00', '2016-01-01 00:10:55', 1, 0, 0), 
+(12, 6, '200006.0002', 14, '1.00', '', '0000-00-00', '2016-01-01 00:10:56', 1, 0, 0), 
+(13, 7, '200015.0001', 7, '10.00', '', '0000-00-00', '2016-01-01 00:10:59', 1, 0, 0), 
+(14, 7, '200015.0002', 14, '1.00', '', '0000-00-00', '2016-01-01 00:11:00', 1, 0, 0), 
+(15, 8, '200020.0001', 7, '10.00', '', '0000-00-00', '2016-01-01 00:11:01', 1, 0, 0), 
+(16, 8, '200020.0002', 14, '1.00', '', '0000-00-00', '2016-01-01 00:11:02', 1, 0, 0), 
+(17, 9, '200100.0001', 7, '10.00', '', '0000-00-00', '2016-01-01 00:11:07', 1, 0, 0), 
+(18, 9, '200100.0002', 14, '1.00', '', '0000-00-00', '2016-01-01 00:11:08', 1, 0, 0), 
+(19, 10, '200101.0001', 14, '1.00', '', '0000-00-00', '2015-12-31 06:24:55', 1, 0, 0), 
+(20, 10, '200101.0002', 7, '10.00', '', '0000-00-00', '2015-12-31 06:24:56', 1, 0, 0), 
+(21, 10, '200101.0003', 1, '40.00', '', '0000-00-00', '2015-12-31 06:24:56', 1, 0, 0), 
+(22, 2, '200002.0001', 7, '10.00', '', '0000-00-00', '2016-01-01 00:12:10', 1, 0, 0), 
+(23, 12, '200102.0001', 14, '1.00', '', '0000-00-00', '2015-12-31 06:27:43', 1, 0, 0), 
+(24, 12, '200102.0002', 7, '10.00', '', '0000-00-00', '2015-12-31 06:27:43', 1, 0, 0), 
+(25, 12, '200102.0003', 1, '40.00', '', '0000-00-00', '2015-12-31 06:27:43', 1, 0, 0), 
+(26, 13, '200103.0001', 14, '1.00', '', '0000-00-00', '2015-12-31 06:28:31', 1, 0, 0), 
+(27, 13, '200103.0002', 7, '25.00', '', '0000-00-00', '2015-12-31 06:28:31', 1, 0, 0), 
+(28, 14, '200104.0001', 14, '1.00', '', '0000-00-00', '2015-12-31 06:29:15', 1, 0, 0), 
+(29, 14, '200104.0002', 7, '50.00', '', '0000-00-00', '2015-12-31 06:29:15', 1, 0, 0), 
+(30, 15, '200201.0001', 14, '1.00', '', '0000-00-00', '2015-12-31 06:32:22', 1, 0, 0), 
+(31, 15, '200201.0002', 7, '25.00', '', '0000-00-00', '2015-12-31 06:32:22', 1, 0, 0), 
+(32, 16, '200202.0001', 14, '1.00', '', '0000-00-00', '2015-12-31 06:33:09', 1, 0, 0), 
+(33, 16, '200202.0002', 7, '25.00', '', '0000-00-00', '2015-12-31 06:33:09', 1, 0, 0), 
+(34, 17, '200301.0001', 4, '1.00', '', '0000-00-00', '2015-12-31 06:38:43', 1, 0, 0), 
+(35, 17, '200301.0002', 7, '12.50', '', '0000-00-00', '2015-12-31 06:38:43', 1, 0, 0), 
+(36, 18, '200302.0001', 4, '1.00', '', '0000-00-00', '2015-12-31 06:39:47', 1, 0, 0), 
+(37, 18, '200302.0002', 7, '12.00', '', '0000-00-00', '2015-12-31 06:39:47', 1, 0, 0), 
+(38, 19, '200303.0001', 4, '1.00', '', '0000-00-00', '2015-12-31 06:40:32', 1, 0, 0), 
+(39, 19, '200303.0002', 7, '25.00', '', '0000-00-00', '2015-12-31 06:40:32', 1, 0, 0), 
+(40, 20, '200401.0001', 4, '1.00', '', '0000-00-00', '2015-12-31 06:41:33', 1, 0, 0), 
+(41, 20, '200401.0002', 7, '10.00', '', '0000-00-00', '2015-12-31 06:41:33', 1, 0, 0), 
+(42, 21, '200402.0001', 4, '1.00', '', '0000-00-00', '2015-12-31 06:42:16', 1, 0, 0), 
+(43, 21, '200402.0002', 7, '10.00', '', '0000-00-00', '2015-12-31 06:42:16', 1, 0, 0), 
+(44, 22, '200403.0001', 4, '1.00', '', '0000-00-00', '2015-12-31 06:45:44', 1, 0, 0), 
+(45, 22, '200403.0002', 7, '10.00', '', '0000-00-00', '2015-12-31 06:45:44', 1, 0, 0), 
+(46, 23, '200404.0001', 4, '1.00', '', '0000-00-00', '2015-12-31 06:47:44', 1, 0, 0), 
+(47, 23, '200404.0002', 7, '10.00', '', '0000-00-00', '2015-12-31 06:47:44', 1, 0, 0), 
+(48, 24, '200406.0001', 4, '1.00', '', '0000-00-00', '2015-12-31 06:48:37', 1, 0, 0), 
+(49, 24, '200406.0002', 7, '10.00', '', '0000-00-00', '2015-12-31 06:48:37', 1, 0, 0);
+
+-- Table structure for table `data_produk_diskon` 
+DROP TABLE IF EXISTS `data_produk_diskon`;
+
+CREATE TABLE `data_produk_diskon` (
+  `diskon_id` int(11) NOT NULL AUTO_INCREMENT,
+  `produk_id` int(11) NOT NULL,
+  `diskon_qty` int(11) NOT NULL,
+  `diskon_jenis` varchar(20) NOT NULL,
+  `diskon_jumlah` decimal(15,2) NOT NULL,
+  `diskon_keterangan` varchar(255) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` int(11) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`diskon_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk_diskon` 
+insert into `data_produk_diskon` values
+(1, 1, 5, 'Persentase', '10.00', '', '2015-11-10 02:17:44', 1, 0, 0);
+
+-- Table structure for table `data_produk_harga` 
+DROP TABLE IF EXISTS `data_produk_harga`;
+
+CREATE TABLE `data_produk_harga` (
+  `produk_harga_id` int(11) NOT NULL AUTO_INCREMENT,
+  `produk_harga_tanggal` date NOT NULL,
+  `detail_satuan_id` int(11) NOT NULL,
+  `lokasi_id` int(11) NOT NULL,
+  `produk_harga_beli` int(11) NOT NULL,
+  `pembelian_harga_hpp` decimal(14,3) NOT NULL,
+  `pembelian_detail_id` int(11) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_update` date NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`produk_harga_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk_harga` 
+insert into `data_produk_harga` values
+(1, '2015-12-31', 2, 4, 500000, '410005.000', 1, 0, 0, '2015-12-31', 1), 
+(2, '2015-12-31', 1, 4, 30000, '32005.000', 2, 0, 0, '2015-12-31', 1), 
+(3, '2015-12-31', 2, 4, 500000, '410005.000', 1, 0, 0, '2015-12-31', 1), 
+(4, '2015-12-31', 1, 4, 30000, '32005.000', 2, 0, 0, '2015-12-31', 1), 
+(5, '2015-12-31', 2, 4, 500000, '410005.000', 1, 0, 0, '2015-12-31', 1), 
+(6, '2015-12-31', 1, 4, 30000, '32005.000', 2, 0, 0, '2015-12-31', 1);
+
+-- Table structure for table `data_produk_harga_range` 
+DROP TABLE IF EXISTS `data_produk_harga_range`;
+
+CREATE TABLE `data_produk_harga_range` (
+  `produk_harga_range_id` int(11) NOT NULL AUTO_INCREMENT,
+  `produk_harga_id` int(11) NOT NULL,
+  `detail_satuan_id` int(11) NOT NULL,
+  `produk_harga_range_range` varchar(50) NOT NULL,
+  `produk_harga_range_harga` decimal(15,2) NOT NULL,
+  `produk_harga_range_profit` float NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`produk_harga_range_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table structure for table `data_produk_kategori` 
+DROP TABLE IF EXISTS `data_produk_kategori`;
+
+CREATE TABLE `data_produk_kategori` (
+  `produk_kategori_id` int(11) NOT NULL AUTO_INCREMENT,
+  `produk_kategori_nama` varchar(256) NOT NULL,
+  `produk_kategori_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`produk_kategori_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk_kategori` 
+insert into `data_produk_kategori` values
+(6, 'Margarin Dan Minyak', '', '0000-00-00', '2015-12-31 05:04:26', 0, 0, 1), 
+(7, 'Susu', '', '0000-00-00', '2015-12-10 06:13:11', 0, 0, 1), 
+(8, 'Coklat Bubuk', '', '0000-00-00', '2015-12-10 06:13:34', 0, 0, 1), 
+(9, 'asf', '', '0000-00-00', '2015-12-10 12:13:47', 1, 0, 1), 
+(10, 'Kacang', '', '0000-00-00', '2015-12-16 03:34:12', 0, 0, 1), 
+(11, 'Pemanis', '', '2015-12-23', '2015-12-23 03:27:05', 0, 0, 1), 
+(12, 'Filling', '', '2015-12-23', '2015-12-23 03:27:08', 0, 0, 1), 
+(13, 'Gula Halus', '', '0000-00-00', '2015-12-31 05:03:16', 0, 0, 1), 
+(14, 'Meses', '', '0000-00-00', '2015-12-31 05:03:39', 0, 0, 1), 
+(15, 'Selai', '', '0000-00-00', '2015-12-31 05:03:57', 0, 0, 1), 
+(16, 'Susu Kental Manis', '', '0000-00-00', '2015-12-31 05:04:44', 0, 0, 1), 
+(17, 'Breadcrumb', '', '0000-00-00', '2015-12-31 05:05:15', 0, 0, 1), 
+(18, 'Pasta & Essence', '', '0000-00-00', '2015-12-31 05:17:02', 0, 0, 1), 
+(19, 'Seasoning', '', '0000-00-00', '2015-12-31 05:17:36', 0, 0, 1);
+
+-- Table structure for table `data_produk_paket` 
+DROP TABLE IF EXISTS `data_produk_paket`;
+
+CREATE TABLE `data_produk_paket` (
+  `produk_paket_id` int(11) NOT NULL AUTO_INCREMENT,
+  `produk_paket_nama` varchar(255) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `produk_paket_harga` decimal(15,2) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  `produk_paket_keterangan` varchar(255) NOT NULL,
+  PRIMARY KEY (`produk_paket_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk_paket` 
+insert into `data_produk_paket` values
+(1, 'test', '2015-11-18 05:34:43', 0, 0, '1.00', 1, 'tes');
+
+-- Table structure for table `data_produk_paket_detail` 
+DROP TABLE IF EXISTS `data_produk_paket_detail`;
+
+CREATE TABLE `data_produk_paket_detail` (
+  `produk_paket_detail_id` int(11) NOT NULL AUTO_INCREMENT,
+  `produk_paket_id` int(11) NOT NULL,
+  `produk_id` int(11) NOT NULL,
+  `produk_paket_detail_jumlah` int(11) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`produk_paket_detail_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk_paket_detail` 
+insert into `data_produk_paket_detail` values
+(1, 1, 0, 2, '2015-11-18 05:35:39', 0, 0, 1);
+
+-- Table structure for table `data_produk_promo` 
+DROP TABLE IF EXISTS `data_produk_promo`;
+
+CREATE TABLE `data_produk_promo` (
+  `produk_promo_id` int(11) NOT NULL AUTO_INCREMENT,
+  `produk_id` int(11) NOT NULL,
+  `produk_promo_nama` varchar(255) NOT NULL,
+  `produk_promo_disc` double(10,2) NOT NULL,
+  `produk_promo_periode_awal` date NOT NULL,
+  `produk_promo_periode_akhir` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  `produk_promo_keterangan` varchar(255) NOT NULL,
+  PRIMARY KEY (`produk_promo_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table structure for table `data_produk_satuan` 
+DROP TABLE IF EXISTS `data_produk_satuan`;
+
+CREATE TABLE `data_produk_satuan` (
+  `produk_satuan_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `produk_id` smallint(6) NOT NULL,
+  `satuan_id` smallint(6) NOT NULL,
+  `satuan_index` int(11) NOT NULL,
+  `satuan_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`produk_satuan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk_satuan` 
+insert into `data_produk_satuan` values
+(20, 1, 14, 1, '', '2015-12-31', '2016-01-01 00:09:24', 1, 0, 0), 
+(21, 1, 7, 2, '', '2015-12-31', '2016-01-01 00:13:33', 1, 0, 0), 
+(22, 2, 14, 1, '', '2015-12-31', '2016-01-01 00:17:02', 1, 0, 0), 
+(23, 2, 7, 2, '', '2015-12-31', '2016-01-01 00:17:01', 1, 0, 0), 
+(24, 3, 14, 1, '', '2015-12-31', '2016-01-01 00:17:16', 1, 0, 0), 
+(25, 3, 7, 2, '', '2015-12-31', '2016-01-01 00:17:14', 1, 0, 0), 
+(31, 4, 14, 2, '', '2015-12-31', '2016-01-01 00:17:36', 1, 0, 0), 
+(32, 5, 14, 1, '', '2015-12-31', '2016-01-01 00:14:50', 1, 0, 0), 
+(33, 5, 7, 2, '', '2015-12-31', '2016-01-01 00:14:53', 1, 0, 0), 
+(34, 6, 14, 1, '', '2015-12-31', '2016-01-01 00:14:57', 1, 0, 0), 
+(35, 6, 7, 2, '', '2015-12-31', '2016-01-01 00:14:59', 1, 0, 0), 
+(36, 7, 14, 1, '', '2015-12-31', '2016-01-01 00:15:04', 1, 0, 0), 
+(37, 7, 7, 2, '', '2015-12-31', '2016-01-01 00:15:07', 1, 0, 0), 
+(38, 8, 14, 1, '', '2015-12-31', '2016-01-01 00:15:11', 1, 0, 0), 
+(39, 8, 7, 2, '', '2015-12-31', '2016-01-01 00:15:13', 1, 0, 0), 
+(40, 10, 7, 2, '', '2015-12-31', '2016-01-01 00:15:19', 1, 0, 0), 
+(41, 10, 14, 1, '', '2015-12-31', '2016-01-01 00:15:26', 1, 0, 0), 
+(42, 11, 1, 3, '', '2015-12-31', '2016-01-01 00:15:30', 1, 0, 0), 
+(43, 10, 1, 3, '', '2015-12-31', '2016-01-01 00:15:33', 1, 0, 0), 
+(44, 11, 14, 1, '', '2015-12-31', '2016-01-01 00:15:37', 1, 0, 0), 
+(45, 11, 7, 2, '', '2015-12-31', '2016-01-01 00:15:38', 1, 0, 0), 
+(46, 12, 7, 2, '', '2015-12-31', '2016-01-01 00:15:48', 1, 0, 0), 
+(47, 12, 14, 1, '', '2015-12-31', '2016-01-01 00:15:44', 1, 0, 0), 
+(49, 13, 14, 1, '', '2015-12-31', '2016-01-01 00:15:56', 1, 0, 0), 
+(50, 13, 7, 2, '', '2015-12-31', '2016-01-01 00:16:03', 1, 0, 0), 
+(53, 9, 14, 1, '', '2015-12-31', '2016-01-01 00:16:06', 1, 0, 0), 
+(54, 9, 7, 2, '', '2015-12-31', '2016-01-01 00:16:09', 1, 0, 0), 
+(55, 14, 14, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(56, 14, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(57, 15, 14, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(58, 15, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(59, 16, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(60, 16, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(61, 17, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(62, 17, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(63, 18, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(64, 18, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(65, 19, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(66, 19, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(67, 20, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(68, 20, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(69, 21, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(70, 21, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(71, 22, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(72, 22, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(73, 23, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(74, 23, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(75, 24, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(76, 24, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(77, 25, 4, 1, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0), 
+(78, 25, 7, 2, '', '2015-12-31', '2015-12-31 05:31:05', 1, 0, 0);
+
+-- Table structure for table `data_produk_supplier` 
+DROP TABLE IF EXISTS `data_produk_supplier`;
+
+CREATE TABLE `data_produk_supplier` (
+  `produk_supplier_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `produk_id` smallint(6) NOT NULL,
+  `supplier_id` smallint(6) NOT NULL,
+  `produk_supplier_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`produk_supplier_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_produk_supplier` 
+insert into `data_produk_supplier` values
+(1, 16, 8, '', '2015-12-30', '2015-12-30 11:08:49', 1, 0, 0);
+
+-- Table structure for table `data_rekening` 
+DROP TABLE IF EXISTS `data_rekening`;
+
+CREATE TABLE `data_rekening` (
+  `rekening_id` int(11) NOT NULL AUTO_INCREMENT,
+  `rekening_nama` varchar(255) NOT NULL,
+  `rekening_no` varchar(100) NOT NULL,
+  `rekening_bank` varchar(255) NOT NULL,
+  `rekening_jumlah` decimal(15,2) NOT NULL,
+  `rekening_inisial` varchar(50) NOT NULL,
+  `rekening_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`rekening_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_rekening` 
+insert into `data_rekening` values
+(4, 'Sari Food', '1018271231247', 'BCA', '0.00', '', '', '0000-00-00', 1, 0, '2015-12-10 11:46:42', 1), 
+(5, 'CV Sari Food', '3092710000080', 'Mandiri', '0.00', '', '', '0000-00-00', 0, 0, '2015-12-31 07:28:51', 1), 
+(6, 'Roti Sari', '1236654865', 'Permata', '0.00', 'CN', '', '0000-00-00', 0, 0, '2015-12-10 05:46:26', 1);
+
+-- Table structure for table `data_role` 
+DROP TABLE IF EXISTS `data_role`;
+
+CREATE TABLE `data_role` (
+  `role_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `role_nama` varchar(30) NOT NULL,
+  `role_keterangan` varchar(50) NOT NULL,
+  `last_update` timestamp NULL DEFAULT NULL,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_role` 
+insert into `data_role` values
+(1, 'Administrator', '', '2015-10-02 00:00:00', 1, 0, 1), 
+(2, 'Salesman', '', '2015-11-09 03:36:21', 1, 0, 1), 
+(5, 'Manager', '', '2015-12-08 03:22:32', 1, 1, 0), 
+(6, 'tes', '', '2015-12-28 08:10:30', 1, 0, 0), 
+(7, 'aaaaaaaaaaaaaaa', '', '2015-12-31 04:39:01', 1, 1, 0);
+
+-- Table structure for table `data_satuan` 
+DROP TABLE IF EXISTS `data_satuan`;
+
+CREATE TABLE `data_satuan` (
+  `satuan_id` int(11) NOT NULL AUTO_INCREMENT,
+  `satuan_nama` varchar(256) NOT NULL,
+  `satuan_keterangan` varchar(100) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`satuan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_satuan` 
+insert into `data_satuan` values
+(1, 'Pcs', '', '0000-00-00', '2015-10-13 03:37:48', 0, 0, 1), 
+(2, 'Lusinan', '', '0000-00-00', '2015-11-09 11:32:08', 1, 0, 1), 
+(3, 'Bungkus', '', '0000-00-00', '2015-11-09 05:32:19', 0, 0, 1), 
+(4, 'Dus', '', '0000-00-00', '2016-01-01 00:34:26', 0, 0, 1), 
+(5, 'Liter', '', '0000-00-00', '2015-11-09 05:32:36', 0, 0, 1), 
+(6, 'Gram', '', '0000-00-00', '2015-11-09 05:32:44', 0, 0, 1), 
+(7, 'Kg', '', '0000-00-00', '2015-11-09 05:34:00', 0, 0, 1), 
+(8, 'Kwintal', '', '0000-00-00', '2015-11-09 05:33:40', 0, 0, 1), 
+(9, 'Ton', '', '0000-00-00', '2015-11-09 05:33:47', 0, 0, 1), 
+(10, 'sdg3', '', '0000-00-00', '2015-12-10 11:57:25', 1, 0, 1), 
+(11, 'Pak', '', '2015-12-15', '2015-12-23 03:22:55', 0, 0, 1), 
+(12, 'Karton', '', '2015-12-23', '2015-12-23 03:22:44', 0, 0, 1), 
+(13, 'Peace', '', '2015-12-23', '2015-12-23 09:23:17', 1, 0, 1), 
+(14, 'Zak', '', '2015-12-31', '2015-12-31 05:29:24', 0, 0, 1);
+
+-- Table structure for table `data_stok` 
+DROP TABLE IF EXISTS `data_stok`;
+
+CREATE TABLE `data_stok` (
+  `stok_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `lokasi_id` smallint(6) NOT NULL,
+  `detail_satuan_id` smallint(6) NOT NULL,
+  `stok_maksimum` float NOT NULL,
+  `stok_minimum` float NOT NULL,
+  `stok_good` float NOT NULL,
+  `stok_transit` float NOT NULL,
+  `stok_bad` float NOT NULL,
+  `stok_hold` float NOT NULL,
+  `pembelian_id` int(11) NOT NULL,
+  `harga_beli` decimal(15,2) NOT NULL,
+  `penjualan_id` int(11) NOT NULL,
+  `harga_jual` decimal(15,2) NOT NULL,
+  `is_opname` tinyint(1) NOT NULL,
+  `is_transfer` tinyint(1) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `reff_harga` int(11) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`stok_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=416 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_stok` 
+insert into `data_stok` values
+(1, 1, 1, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:32:13', 1, 0, 0), 
+(2, 2, 1, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:32:13', 1, 0, 0), 
+(3, 4, 1, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:32:13', 1, 0, 0), 
+(4, 5, 1, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:32:13', 1, 0, 0), 
+(8, 1, 2, '5', '1', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 07:07:37', 1, 0, 0), 
+(9, 2, 2, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:32:13', 1, 0, 0), 
+(10, 4, 2, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:32:13', 1, 0, 0), 
+(11, 5, 2, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:32:13', 1, 0, 0), 
+(15, 1, 3, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:47:36', 1, 0, 0), 
+(16, 2, 3, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:47:36', 1, 0, 0), 
+(17, 4, 3, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:47:36', 1, 0, 0), 
+(18, 5, 3, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:47:36', 1, 0, 0), 
+(22, 1, 4, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:47:36', 1, 0, 0), 
+(23, 2, 4, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:47:36', 1, 0, 0), 
+(24, 4, 4, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:47:36', 1, 0, 0), 
+(25, 5, 4, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:47:36', 1, 0, 0), 
+(29, 1, 5, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:51:39', 1, 0, 0), 
+(30, 2, 5, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:51:39', 1, 0, 0), 
+(31, 4, 5, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:51:39', 1, 0, 0), 
+(32, 5, 5, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:51:39', 1, 0, 0), 
+(36, 1, 6, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:51:40', 1, 0, 0), 
+(37, 2, 6, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:51:40', 1, 0, 0), 
+(38, 4, 6, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:51:40', 1, 0, 0), 
+(39, 5, 6, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:51:40', 1, 0, 0), 
+(43, 1, 7, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:52:54', 1, 0, 0), 
+(44, 2, 7, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:52:54', 1, 0, 0), 
+(45, 4, 7, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:52:54', 1, 0, 0), 
+(46, 5, 7, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:52:54', 1, 0, 0), 
+(50, 1, 8, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:52:54', 1, 0, 0), 
+(51, 2, 8, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:52:54', 1, 0, 0), 
+(52, 4, 8, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:52:54', 1, 0, 0), 
+(53, 5, 8, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:52:54', 1, 0, 0), 
+(57, 1, 9, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:54:50', 1, 0, 0), 
+(58, 2, 9, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:54:50', 1, 0, 0), 
+(59, 4, 9, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:54:50', 1, 0, 0), 
+(60, 5, 9, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:54:50', 1, 0, 0), 
+(64, 1, 10, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:54:50', 1, 0, 0), 
+(65, 2, 10, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:54:50', 1, 0, 0), 
+(66, 4, 10, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:54:50', 1, 0, 0), 
+(67, 5, 10, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:54:50', 1, 0, 0), 
+(71, 1, 11, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:55:47', 1, 0, 0), 
+(72, 2, 11, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:55:47', 1, 0, 0), 
+(73, 4, 11, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:55:47', 1, 0, 0), 
+(74, 5, 11, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:55:47', 1, 0, 0), 
+(78, 1, 12, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:55:47', 1, 0, 0), 
+(79, 2, 12, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:55:47', 1, 0, 0), 
+(80, 4, 12, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:55:47', 1, 0, 0), 
+(81, 5, 12, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:55:47', 1, 0, 0), 
+(85, 1, 13, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:56:38', 1, 0, 0), 
+(86, 2, 13, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:56:38', 1, 0, 0), 
+(87, 4, 13, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:56:38', 1, 0, 0), 
+(88, 5, 13, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:56:38', 1, 0, 0), 
+(92, 1, 14, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:56:38', 1, 0, 0), 
+(93, 2, 14, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:56:38', 1, 0, 0), 
+(94, 4, 14, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:56:38', 1, 0, 0), 
+(95, 5, 14, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:56:38', 1, 0, 0), 
+(99, 1, 15, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:57:36', 1, 0, 0), 
+(100, 2, 15, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:57:36', 1, 0, 0), 
+(101, 4, 15, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:57:36', 1, 0, 0), 
+(102, 5, 15, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:57:36', 1, 0, 0), 
+(106, 1, 16, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:57:36', 1, 0, 0), 
+(107, 2, 16, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:57:36', 1, 0, 0), 
+(108, 4, 16, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:57:36', 1, 0, 0), 
+(109, 5, 16, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 05:57:36', 1, 0, 0), 
+(113, 1, 17, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:04:20', 1, 0, 0), 
+(114, 2, 17, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:04:20', 1, 0, 0), 
+(115, 4, 17, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:04:20', 1, 0, 0), 
+(116, 5, 17, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:04:20', 1, 0, 0), 
+(120, 1, 18, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:04:20', 1, 0, 0), 
+(121, 2, 18, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:04:20', 1, 0, 0), 
+(122, 4, 18, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:04:20', 1, 0, 0), 
+(123, 5, 18, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:04:20', 1, 0, 0), 
+(127, 1, 19, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:55', 1, 0, 0), 
+(128, 2, 19, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:55', 1, 0, 0), 
+(129, 4, 19, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:55', 1, 0, 0), 
+(130, 5, 19, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:55', 1, 0, 0), 
+(134, 1, 20, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:56', 1, 0, 0), 
+(135, 2, 20, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:56', 1, 0, 0), 
+(136, 4, 20, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:56', 1, 0, 0), 
+(137, 5, 20, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:56', 1, 0, 0), 
+(141, 1, 21, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:56', 1, 0, 0), 
+(142, 2, 21, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:56', 1, 0, 0), 
+(143, 4, 21, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:56', 1, 0, 0), 
+(144, 5, 21, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:24:56', 1, 0, 0), 
+(148, 1, 23, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(149, 2, 23, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(150, 4, 23, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(151, 5, 23, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(155, 1, 24, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(156, 2, 24, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(157, 4, 24, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(158, 5, 24, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(162, 1, 25, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(163, 2, 25, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(164, 4, 25, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(165, 5, 25, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:27:43', 1, 0, 0), 
+(169, 1, 26, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:28:31', 1, 0, 0), 
+(170, 2, 26, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:28:31', 1, 0, 0), 
+(171, 4, 26, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:28:31', 1, 0, 0), 
+(172, 5, 26, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:28:31', 1, 0, 0), 
+(176, 1, 27, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:28:31', 1, 0, 0), 
+(177, 2, 27, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:28:31', 1, 0, 0), 
+(178, 4, 27, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:28:31', 1, 0, 0), 
+(179, 5, 27, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:28:31', 1, 0, 0), 
+(183, 1, 28, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:29:15', 1, 0, 0), 
+(184, 2, 28, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:29:15', 1, 0, 0), 
+(185, 4, 28, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:29:15', 1, 0, 0), 
+(186, 5, 28, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:29:15', 1, 0, 0), 
+(190, 1, 29, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:29:15', 1, 0, 0), 
+(191, 2, 29, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:29:15', 1, 0, 0), 
+(192, 4, 29, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:29:15', 1, 0, 0), 
+(193, 5, 29, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:29:15', 1, 0, 0), 
+(197, 1, 30, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:32:22', 1, 0, 0), 
+(198, 2, 30, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:32:22', 1, 0, 0), 
+(199, 4, 30, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:32:22', 1, 0, 0), 
+(200, 5, 30, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:32:22', 1, 0, 0), 
+(204, 1, 31, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:32:22', 1, 0, 0), 
+(205, 2, 31, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:32:22', 1, 0, 0), 
+(206, 4, 31, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:32:22', 1, 0, 0), 
+(207, 5, 31, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:32:22', 1, 0, 0), 
+(211, 1, 32, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:33:09', 1, 0, 0), 
+(212, 2, 32, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:33:09', 1, 0, 0), 
+(213, 4, 32, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:33:09', 1, 0, 0), 
+(214, 5, 32, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:33:09', 1, 0, 0), 
+(218, 1, 33, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:33:09', 1, 0, 0), 
+(219, 2, 33, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:33:09', 1, 0, 0), 
+(220, 4, 33, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:33:09', 1, 0, 0), 
+(221, 5, 33, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:33:09', 1, 0, 0), 
+(225, 1, 34, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:38:07', 1, 0, 0), 
+(226, 2, 34, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:38:07', 1, 0, 0), 
+(227, 4, 34, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:38:07', 1, 0, 0), 
+(228, 5, 34, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:38:07', 1, 0, 0), 
+(232, 1, 35, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:38:07', 1, 0, 0), 
+(233, 2, 35, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:38:07', 1, 0, 0), 
+(234, 4, 35, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:38:07', 1, 0, 0), 
+(235, 5, 35, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:38:07', 1, 0, 0), 
+(239, 1, 36, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:39:47', 1, 0, 0), 
+(240, 2, 36, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:39:47', 1, 0, 0), 
+(241, 4, 36, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:39:47', 1, 0, 0), 
+(242, 5, 36, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:39:47', 1, 0, 0), 
+(246, 1, 37, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:39:47', 1, 0, 0), 
+(247, 2, 37, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:39:47', 1, 0, 0), 
+(248, 4, 37, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:39:47', 1, 0, 0), 
+(249, 5, 37, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:39:47', 1, 0, 0), 
+(253, 1, 38, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:40:32', 1, 0, 0), 
+(254, 2, 38, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:40:32', 1, 0, 0), 
+(255, 4, 38, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:40:32', 1, 0, 0), 
+(256, 5, 38, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:40:32', 1, 0, 0), 
+(260, 1, 39, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:40:32', 1, 0, 0), 
+(261, 2, 39, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:40:32', 1, 0, 0), 
+(262, 4, 39, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:40:32', 1, 0, 0), 
+(263, 5, 39, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:40:32', 1, 0, 0), 
+(267, 1, 40, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:41:33', 1, 0, 0), 
+(268, 2, 40, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:41:33', 1, 0, 0), 
+(269, 4, 40, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:41:33', 1, 0, 0), 
+(270, 5, 40, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:41:33', 1, 0, 0), 
+(274, 1, 41, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:41:33', 1, 0, 0), 
+(275, 2, 41, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:41:33', 1, 0, 0), 
+(276, 4, 41, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:41:33', 1, 0, 0), 
+(277, 5, 41, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:41:33', 1, 0, 0), 
+(281, 1, 42, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:42:16', 1, 0, 0), 
+(282, 2, 42, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:42:16', 1, 0, 0), 
+(283, 4, 42, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:42:16', 1, 0, 0), 
+(284, 5, 42, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:42:16', 1, 0, 0), 
+(288, 1, 43, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:42:16', 1, 0, 0), 
+(289, 2, 43, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:42:16', 1, 0, 0), 
+(290, 4, 43, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:42:16', 1, 0, 0), 
+(291, 5, 43, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:42:16', 1, 0, 0), 
+(295, 1, 44, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:45:44', 1, 0, 0), 
+(296, 2, 44, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:45:44', 1, 0, 0), 
+(297, 4, 44, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:45:44', 1, 0, 0), 
+(298, 5, 44, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:45:44', 1, 0, 0), 
+(302, 1, 45, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:45:44', 1, 0, 0), 
+(303, 2, 45, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:45:44', 1, 0, 0), 
+(304, 4, 45, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:45:44', 1, 0, 0), 
+(305, 5, 45, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:45:44', 1, 0, 0), 
+(309, 1, 46, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:47:44', 1, 0, 0), 
+(310, 2, 46, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:47:44', 1, 0, 0), 
+(311, 4, 46, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:47:44', 1, 0, 0), 
+(312, 5, 46, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:47:44', 1, 0, 0), 
+(316, 1, 47, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:47:44', 1, 0, 0), 
+(317, 2, 47, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:47:44', 1, 0, 0), 
+(318, 4, 47, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:47:44', 1, 0, 0), 
+(319, 5, 47, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:47:44', 1, 0, 0), 
+(323, 1, 48, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:48:37', 1, 0, 0), 
+(324, 2, 48, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:48:37', 1, 0, 0), 
+(325, 4, 48, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:48:37', 1, 0, 0), 
+(326, 5, 48, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:48:37', 1, 0, 0), 
+(330, 1, 49, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:48:37', 1, 0, 0), 
+(331, 2, 49, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:48:37', 1, 0, 0), 
+(332, 4, 49, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:48:37', 1, 0, 0), 
+(333, 5, 49, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '2015-12-31', 0, '2015-12-31 06:48:37', 1, 0, 0), 
+(337, 6, 1, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(338, 6, 2, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(339, 6, 4, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(340, 6, 5, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(341, 6, 6, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(342, 6, 7, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(343, 6, 8, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(344, 6, 9, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(345, 6, 10, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(346, 6, 11, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(347, 6, 12, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(348, 6, 13, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(349, 6, 14, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(350, 6, 15, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(351, 6, 16, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(352, 6, 17, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(353, 6, 18, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(354, 6, 19, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(355, 6, 20, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(356, 6, 21, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(357, 6, 22, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(358, 6, 23, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(359, 6, 24, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(360, 6, 25, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(361, 6, 26, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(362, 6, 27, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(363, 6, 28, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(364, 6, 29, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(365, 6, 30, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(366, 6, 31, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(367, 6, 32, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(368, 6, 33, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(369, 6, 34, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(370, 6, 35, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(371, 6, 36, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(372, 6, 37, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(373, 6, 38, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(374, 6, 39, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(375, 6, 40, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(376, 6, 41, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(377, 6, 42, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(378, 6, 43, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(379, 6, 44, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(380, 6, 45, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(381, 6, 46, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(382, 6, 47, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(383, 6, 48, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(384, 6, 49, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 0, '2016-01-01 01:00:23', 0, 0, 0), 
+(400, 1, 2, '0', '0', '1', '0', '0', '0', 0, '0.00', 0, '0.00', 1, 0, '2015-12-31', 0, '2015-12-31 07:08:18', 1, 0, 0), 
+(401, 1, 2, '0', '0', '0', '0', '0', '0', 0, '0.00', 0, '0.00', 1, 0, '2015-12-31', 0, '2015-12-31 07:09:00', 1, 0, 0), 
+(402, 4, 2, '0', '0', '0', '10', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 4, '2015-12-31 07:35:12', 1, 0, 1), 
+(403, 4, 1, '0', '0', '0', '10', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 5, '2015-12-31 07:35:12', 1, 0, 1), 
+(404, 4, 2, '0', '0', '0', '-10', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 6, '2015-12-31 07:59:05', 1, 0, 1), 
+(405, 4, 2, '0', '0', '10', '0', '0', '0', 1, '500000.00', 0, '0.00', 0, 0, '0000-00-00', 404, '2015-12-31 07:59:05', 1, 0, 1), 
+(406, 4, 1, '0', '0', '0', '-10', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 7, '2015-12-31 07:59:05', 1, 0, 1), 
+(407, 4, 1, '0', '0', '10', '0', '0', '0', 1, '30000.00', 0, '0.00', 0, 0, '0000-00-00', 406, '2015-12-31 07:59:05', 1, 0, 1), 
+(408, 4, 2, '0', '0', '0', '-10', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 8, '2015-12-31 08:02:19', 1, 0, 1), 
+(409, 4, 2, '0', '0', '10', '0', '0', '0', 1, '500000.00', 0, '0.00', 0, 0, '0000-00-00', 408, '2015-12-31 08:02:19', 1, 0, 1), 
+(410, 4, 1, '0', '0', '0', '-10', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 9, '2015-12-31 08:02:20', 1, 0, 1), 
+(411, 4, 1, '0', '0', '10', '0', '0', '0', 1, '30000.00', 0, '0.00', 0, 0, '0000-00-00', 410, '2015-12-31 08:02:20', 1, 0, 1), 
+(412, 4, 2, '0', '0', '0', '-10', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 10, '2015-12-31 08:03:22', 1, 0, 1), 
+(413, 4, 2, '0', '0', '10', '0', '0', '0', 1, '500000.00', 0, '0.00', 0, 0, '0000-00-00', 412, '2015-12-31 08:03:22', 1, 0, 1), 
+(414, 4, 1, '0', '0', '0', '-10', '0', '0', 0, '0.00', 0, '0.00', 0, 0, '0000-00-00', 11, '2015-12-31 08:03:22', 1, 0, 1), 
+(415, 4, 1, '0', '0', '10', '0', '0', '0', 1, '30000.00', 0, '0.00', 0, 0, '0000-00-00', 414, '2015-12-31 08:03:22', 1, 0, 1);
+
+-- Table structure for table `data_stok_history` 
+DROP TABLE IF EXISTS `data_stok_history`;
+
+CREATE TABLE `data_stok_history` (
+  `stok_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `lokasi_id` smallint(6) NOT NULL,
+  `detail_satuan_id` smallint(6) NOT NULL,
+  `stok_maksimum` varchar(20) NOT NULL,
+  `stok_minimum` varchar(20) NOT NULL,
+  `stok_good` varchar(20) NOT NULL,
+  `stok_transit` varchar(20) NOT NULL,
+  `stok_bad` varchar(20) NOT NULL,
+  `stok_hold` varchar(20) NOT NULL,
+  `pembelian_id` int(11) NOT NULL,
+  `harga_beli` int(11) NOT NULL,
+  `penjualan_id` int(11) NOT NULL,
+  `harga_jual` int(11) NOT NULL,
+  `is_opname` int(11) NOT NULL,
+  `is_transfer` int(11) NOT NULL,
+  `is_status_stok` int(11) NOT NULL COMMENT '1= mengirim ke,2=menerima dari,3=opname,4=ubah min max ',
+  `pengirim_penerima_id` int(11) NOT NULL,
+  `keterangan` varchar(1000) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`stok_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_stok_history` 
+insert into `data_stok_history` values
+(1, 1, 2, '10 -> 5', '1 -> 1', '0', '0', '0', '0', 0, 0, 0, 0, 0, 0, 4, 1, '', '2015-12-31', '2015-12-31 07:07:37', 1, 0, 1), 
+(2, 1, 2, '5', '1', '0 -> 1', '0 -> 0', '0 -> 0', '0 -> 0', 0, 0, 0, 0, 1, 0, 3, 1, '', '2015-12-31', '2015-12-31 07:08:18', 1, 0, 1), 
+(3, 1, 2, '5', '1', '1 -> 1', '0 -> 0', '0 -> 0', '0 -> 0', 0, 0, 0, 0, 1, 0, 3, 1, '', '2015-12-31', '2015-12-31 07:09:00', 1, 0, 1), 
+(4, 4, 2, '0', '0', '0', '0 -> 10', '0', '0', 0, 0, 0, 0, 0, 0, 7, 4, 'No 2.OPBP.20153112.0001', '2015-12-31', '2015-12-31 07:35:12', 1, 0, 1), 
+(5, 4, 1, '0', '0', '0', '0 -> 10', '0', '0', 0, 0, 0, 0, 0, 0, 7, 4, 'No 2.OPBP.20153112.0001', '2015-12-31', '2015-12-31 07:35:12', 1, 0, 1), 
+(6, 4, 2, '0', '0', '0 -> 10', '10 -> 0', '0', '0', 1, 0, 0, 0, 0, 0, 6, 4, 'No PBP.20153112.0001', '2015-12-31', '2015-12-31 07:59:05', 1, 0, 1), 
+(7, 4, 1, '0', '0', '0 -> 10', '10 -> 0', '0', '0', 1, 0, 0, 0, 0, 0, 6, 4, 'No PBP.20153112.0001', '2015-12-31', '2015-12-31 07:59:05', 1, 0, 1), 
+(8, 4, 2, '0', '0', '10 -> 20', '0 -> -10', '0', '0', 1, 0, 0, 0, 0, 0, 6, 4, 'No PBP.20153112.0001', '2015-12-31', '2015-12-31 08:02:19', 1, 0, 1), 
+(9, 4, 1, '0', '0', '10 -> 20', '0 -> -10', '0', '0', 1, 0, 0, 0, 0, 0, 6, 4, 'No PBP.20153112.0001', '2015-12-31', '2015-12-31 08:02:20', 1, 0, 1), 
+(10, 4, 2, '0', '0', '20 -> 30', '-10 -> -20', '0', '0', 1, 0, 0, 0, 0, 0, 6, 4, 'No PBP.20153112.0001', '2015-12-31', '2015-12-31 08:03:22', 1, 0, 1), 
+(11, 4, 1, '0', '0', '20 -> 30', '-10 -> -20', '0', '0', 1, 0, 0, 0, 0, 0, 6, 4, 'No PBP.20153112.0001', '2015-12-31', '2015-12-31 08:03:22', 1, 0, 1);
+
+-- Table structure for table `data_supplier` 
+DROP TABLE IF EXISTS `data_supplier`;
+
+CREATE TABLE `data_supplier` (
+  `supplier_id` int(11) NOT NULL AUTO_INCREMENT,
+  `supplier_kategori_id` smallint(6) NOT NULL,
+  `supplier_kode` varchar(256) NOT NULL,
+  `supplier_nama` varchar(256) NOT NULL,
+  `supplier_alamat` varchar(256) NOT NULL,
+  `supplier_kota` varchar(256) NOT NULL,
+  `supplier_telp` varchar(256) NOT NULL,
+  `supplier_telp2` varchar(256) NOT NULL,
+  `supplier_fax` varchar(255) NOT NULL,
+  `supplier_email` varchar(256) NOT NULL,
+  `supplier_cp` varchar(255) NOT NULL,
+  `supplier_nama_npwp` varchar(255) NOT NULL,
+  `supplier_no_npwp` varchar(255) NOT NULL,
+  `supplier_termofpayment` int(11) NOT NULL,
+  `supplier_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`supplier_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_supplier` 
+insert into `data_supplier` values
+(7, 3, '', 'Supplier 1', '-alamat', '-', '-', '-', '', '', '', '', '', 0, '', '0000-00-00', '2015-12-08 14:25:42', 0, 0, 1), 
+(8, 2, '', 'Sarifood', '-', '-', '-', '-', '', '', '', '', '', 0, '', '0000-00-00', '2015-12-08 14:06:18', 0, 0, 1);
+
+-- Table structure for table `data_supplier_kategori` 
+DROP TABLE IF EXISTS `data_supplier_kategori`;
+
+CREATE TABLE `data_supplier_kategori` (
+  `supplier_kategori_id` int(11) NOT NULL AUTO_INCREMENT,
+  `supplier_kategori_nama` varchar(256) NOT NULL,
+  `supplier_kategori_keterangan` varchar(256) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`supplier_kategori_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_supplier_kategori` 
+insert into `data_supplier_kategori` values
+(1, 'b', 'ba\r\n', '0000-00-00', '2015-10-08 08:58:17', 1, 0, 1), 
+(2, 'Pabrik', '', '0000-00-00', '2015-10-23 10:26:19', 0, 0, 1), 
+(3, 'Distributor', '', '0000-00-00', '2015-10-23 10:22:03', 0, 0, 1), 
+(4, '-Lainnya', '', '0000-00-00', '2015-11-09 09:13:31', 1, 0, 1), 
+(5, 'Retail', '', '0000-00-00', '2015-12-08 13:54:26', 1, 0, 1), 
+(6, 'Retail', '', '0000-00-00', '2015-12-08 09:04:23', 0, 0, 1), 
+(7, 'tes5sss', '', '2015-12-15', '2016-01-01 00:53:56', 1, 0, 1), 
+(8, 'barang ', '', '2015-12-28', '2015-12-28 08:18:07', 0, 0, 1), 
+(9, 'asdasdasd', '', '2015-12-31', '2016-01-01 00:54:12', 1, 0, 1);
+
+-- Table structure for table `data_user` 
+DROP TABLE IF EXISTS `data_user`;
+
+CREATE TABLE `data_user` (
+  `user_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `role_id` smallint(6) NOT NULL,
+  `user_name` varchar(10) NOT NULL,
+  `user_password` varchar(100) NOT NULL,
+  `last_login` timestamp NULL DEFAULT NULL,
+  `last_logout` timestamp NULL DEFAULT NULL,
+  `last_update` timestamp NULL DEFAULT NULL,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `data_user` 
+insert into `data_user` values
+(1, 1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '2015-12-31 04:36:44', '2015-12-29 11:02:52', '2015-12-31 04:36:44', 1, 0, 1), 
+(2, 2, 'Sales 1', '9ed083b1436e5f40ef984b28255eef18', null, null, '2015-11-09 03:39:59', 1, 0, 0), 
+(3, 2, 'Sales 2', '9ed083b1436e5f40ef984b28255eef18', null, null, '2015-11-09 03:40:11', 1, 0, 0), 
+(4, 6, 'admin1', '28b662d883b6d76fd96e4ddc5e9ba780', null, null, '2015-12-28 08:11:40', 1, 0, 0), 
+(5, 1, 'aaaaaaaaaa', '21232f297a57a5a743894a0e4a801fc3', null, null, '2015-12-31 04:43:05', 1, 1, 0);
+
+-- Table structure for table `delivery_ex` 
+DROP TABLE IF EXISTS `delivery_ex`;
+
+CREATE TABLE `delivery_ex` (
+  `delivery_ex_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `delivery_ex_no` varchar(100) NOT NULL,
+  `delivery_ex_tgl` date NOT NULL,
+  `delivery_ex_status` varchar(50) NOT NULL,
+  `delivery_ex_keterangan` varchar(255) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`delivery_ex_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `delivery_ex` 
+insert into `delivery_ex` values
+(1, 'DE/281215/001', '2015-12-28', 'Terverifikasi', '', '2015-12-28 08:57:52', 1, 0, 0), 
+(2, 'DE/291215/001', '2015-12-29', 'Terverifikasi', '', '2015-12-29 11:58:54', 1, 0, 0), 
+(3, 'DE/291215/002', '2015-12-29', 'Terverifikasi', '', '2015-12-29 12:08:54', 1, 0, 0), 
+(4, 'DE/291215/003', '2015-12-29', 'Belum Diverifikasi', '', '2015-12-29 12:36:03', 1, 0, 0);
+
+-- Table structure for table `delivery_ex_detail` 
+DROP TABLE IF EXISTS `delivery_ex_detail`;
+
+CREATE TABLE `delivery_ex_detail` (
+  `delivery_ex_detail_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `delivery_ex_id` smallint(6) NOT NULL,
+  `lokasi_id_asal` smallint(6) NOT NULL,
+  `lokasi_id_tujuan` smallint(6) NOT NULL,
+  `detail_satuan_id` smallint(6) NOT NULL,
+  `stok_good` float NOT NULL,
+  `stok_good_terkirim` float NOT NULL,
+  `stok_transit` float NOT NULL,
+  `stok_bad` float NOT NULL,
+  `stok_bad_terkirim` float NOT NULL,
+  `stok_hold` float NOT NULL,
+  `stok_hold_terkirim` float NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`delivery_ex_detail_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `delivery_ex_detail` 
+insert into `delivery_ex_detail` values
+(1, 1, 1, 2, 10, '50', '0', '0', '0', '0', '0', '0', '2015-12-28 08:57:34', 1, 0, 0), 
+(2, 2, 4, 2, 20, '5', '3', '0', '0', '2', '0', '0', '2015-12-29 11:58:54', 1, 0, 0), 
+(3, 3, 4, 1, 19, '1', '1', '0', '0', '0', '0', '0', '2015-12-29 12:08:54', 1, 0, 0), 
+(4, 4, 4, 1, 20, '3', '0', '0', '-2', '0', '0', '0', '2015-12-29 12:36:55', 1, 0, 0);
+
+-- Table structure for table `delivery_in` 
+DROP TABLE IF EXISTS `delivery_in`;
+
+CREATE TABLE `delivery_in` (
+  `delivery_in_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `delivery_in_no` varchar(100) NOT NULL,
+  `delivery_in_tgl` date NOT NULL,
+  `delivery_in_status` varchar(50) NOT NULL,
+  `delivery_in_keterangan` varchar(255) NOT NULL,
+  `last_update` datetime NOT NULL,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`delivery_in_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `delivery_in` 
+insert into `delivery_in` values
+(1, 'DI/281215/001', '2015-12-28', 'Terverifikasi', '', '2015-12-29 08:18:30', 1, 0, 0), 
+(2, 'DI/291215/001', '2015-12-29', 'Terverifikasi', '', '2015-12-29 11:08:36', 1, 0, 0), 
+(3, 'DI/291215/002', '2015-12-29', 'Belum Diverifikasi', '', '2015-12-29 11:11:12', 1, 1, 0), 
+(4, 'DI/291215/003', '2015-12-29', 'Terverifikasi', '', '2015-12-29 11:21:19', 1, 0, 0), 
+(5, 'DI/291215/004', '2015-12-29', 'Terverifikasi', '', '2015-12-29 11:31:04', 1, 0, 0), 
+(6, 'DI/291215/005', '2015-12-29', 'Belum Diverifikasi', '', '2015-12-29 12:39:43', 1, 0, 0), 
+(7, 'DI/311215/001', '2015-12-31', 'Belum Diverifikasi', 'asdas', '2015-12-31 07:10:00', 1, 1, 0);
+
+-- Table structure for table `delivery_in_detail` 
+DROP TABLE IF EXISTS `delivery_in_detail`;
+
+CREATE TABLE `delivery_in_detail` (
+  `delivery_in_detail_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `delivery_in_id` smallint(6) NOT NULL,
+  `lokasi_id_asal` smallint(6) NOT NULL,
+  `lokasi_id_tujuan` smallint(6) NOT NULL,
+  `detail_satuan_id` smallint(6) NOT NULL,
+  `stok_good` float NOT NULL,
+  `stok_good_terkirim` float NOT NULL,
+  `stok_transit` float NOT NULL,
+  `stok_bad` float NOT NULL,
+  `stok_bad_terkirim` float NOT NULL,
+  `stok_hold` float NOT NULL,
+  `stok_hold_terkirim` float NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`delivery_in_detail_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `delivery_in_detail` 
+insert into `delivery_in_detail` values
+(1, 1, 4, 4, 12, '5', '0', '0', '0', '0', '0', '0', '2015-12-29 06:09:48', 1, 0, 0), 
+(2, 1, 4, 4, 10, '2', '0', '0', '0', '0', '0', '0', '2015-12-29 07:29:03', 1, 0, 0), 
+(3, 2, 4, 4, 11, '3', '2', '0', '0', '1', '0', '0', '2015-12-29 11:08:36', 1, 0, 0), 
+(4, 2, 4, 4, 12, '6', '3', '0', '0', '0', '0', '0', '2015-12-29 11:08:36', 1, 0, 0), 
+(5, 3, 4, 4, 19, '1', '1', '0', '0', '0', '0', '0', '2015-12-29 17:14:34', 1, 1, 0), 
+(6, 3, 4, 2, 19, '1', '1', '0', '0', '0', '0', '0', '2015-12-29 11:15:50', 1, 0, 0), 
+(7, 3, 4, 2, 10, '1', '1', '0', '0', '0', '0', '0', '2015-12-29 11:15:50', 1, 0, 0), 
+(8, 4, 4, 2, 12, '5', '2', '0', '0', '3', '0', '0', '2015-12-29 11:21:19', 1, 0, 0), 
+(9, 4, 4, 2, 19, '5', '5', '0', '0', '0', '0', '0', '2015-12-29 11:21:19', 1, 0, 0), 
+(10, 5, 4, 2, 19, '9', '9', '0', '0', '0', '0', '0', '2015-12-29 11:31:04', 1, 0, 0), 
+(11, 6, 4, 4, 10, '1', '0', '0', '0', '0', '0', '0', '2015-12-29 12:40:23', 1, 0, 0);
+
+-- Table structure for table `keuangan` 
+DROP TABLE IF EXISTS `keuangan`;
+
+CREATE TABLE `keuangan` (
+  `keuangan_id` int(11) NOT NULL AUTO_INCREMENT,
+  `keuangan_jenis_pembayaran` varchar(256) NOT NULL,
+  `keuangan_nama` varchar(256) NOT NULL,
+  `keuangan_jenis` varchar(256) NOT NULL,
+  `keuangan_reff_id` int(11) NOT NULL,
+  `transaksi_jenis` varchar(256) NOT NULL,
+  `transaksi_reff_id` int(11) NOT NULL,
+  `keuangan_tanggal` date NOT NULL,
+  `keuangan_jumlah` decimal(15,2) NOT NULL,
+  `keuangan_last_saldo` decimal(15,2) NOT NULL,
+  `keuangan_keterangan` varchar(256) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`keuangan_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `keuangan` 
+insert into `keuangan` values
+(1, 'In', 'asda', 'Cash Besar', 1, '', 0, '2015-12-31', '1.00', '7399502.00', '', '2015-12-31', '2015-12-31 07:13:49', 0, 0, 1), 
+(2, 'In', 'adad', 'Cash Besar', 2, '', 0, '2015-12-31', '10.00', '7399512.00', '', '2015-12-31', '2015-12-31 07:15:55', 0, 0, 1), 
+(3, 'In', 'adad', 'Cash Besar', 3, '', 0, '2015-12-31', '10.00', '7399522.00', '', '2015-12-31', '2015-12-31 07:17:06', 0, 0, 1), 
+(4, 'In', 'asda', 'Cash Kecil', 1, '', 0, '2015-12-31', '1.00', '1.00', '', '2015-12-31', '2015-12-31 07:24:19', 0, 0, 1), 
+(5, 'In', 'asdasd', 'Rekening', 1, '', 0, '2015-12-31', '1.00', '1.00', '', '2015-12-31', '2016-01-01 01:28:51', 1, 0, 1);
+
+-- Table structure for table `keuangan_cash_besar` 
+DROP TABLE IF EXISTS `keuangan_cash_besar`;
+
+CREATE TABLE `keuangan_cash_besar` (
+  `cash_besar_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `kas_besar_id` int(11) NOT NULL,
+  `cash_besar_nama` varchar(100) NOT NULL,
+  `cash_besar_jenis` varchar(50) NOT NULL,
+  `cash_besar_jml` decimal(15,2) NOT NULL,
+  `cash_besar_tanggal` date NOT NULL,
+  `pembelian_id` smallint(6) NOT NULL,
+  `penjualan_id` smallint(6) NOT NULL,
+  `keuangan_id` smallint(6) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `cash_besar_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `akun_id` int(11) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`cash_besar_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `keuangan_cash_besar` 
+insert into `keuangan_cash_besar` values
+(1, 2, 'asda', 'In', '2.00', '2015-12-31', 0, 0, 1, 4, '', '2015-12-31', 0, '2016-01-01 01:21:43', 1, 1, 0), 
+(2, 2, 'adad', 'In', '10.00', '2015-12-31', 0, 0, 2, 4, '', '2015-12-31', 0, '2015-12-31 07:15:55', 1, 0, 0), 
+(3, 2, 'adad', 'In', '10.00', '2015-12-31', 0, 0, 3, 4, '', '2015-12-31', 0, '2015-12-31 07:17:06', 1, 0, 0);
+
+-- Table structure for table `keuangan_cash_kecil` 
+DROP TABLE IF EXISTS `keuangan_cash_kecil`;
+
+CREATE TABLE `keuangan_cash_kecil` (
+  `cash_kecil_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `kas_kecil_id` int(11) NOT NULL,
+  `cash_kecil_nama` varchar(255) NOT NULL,
+  `cash_kecil_jenis` varchar(50) NOT NULL,
+  `cash_kecil_jml` decimal(15,2) NOT NULL,
+  `cash_kecil_tanggal` date NOT NULL,
+  `keuangan_id` smallint(6) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `cash_kecil_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `akun_id` int(11) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`cash_kecil_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `keuangan_cash_kecil` 
+insert into `keuangan_cash_kecil` values
+(1, 2, 'asda', 'In', '2.00', '2015-12-31', 4, 4, '', '2015-12-31', 0, '2016-01-01 01:24:46', 1, 1, 0);
+
+-- Table structure for table `keuangan_giro` 
+DROP TABLE IF EXISTS `keuangan_giro`;
+
+CREATE TABLE `keuangan_giro` (
+  `giro_id` int(11) NOT NULL AUTO_INCREMENT,
+  `data_rekening_id` smallint(6) NOT NULL,
+  `keuangan_id` smallint(6) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `giro_nama` varchar(50) NOT NULL,
+  `giro_jenis` varchar(255) NOT NULL COMMENT 'in/out',
+  `giro_status` varchar(255) NOT NULL,
+  `giro_tanggal` date NOT NULL,
+  `giro_jatuh_tempo` date NOT NULL,
+  `giro_tanggal_cair` date NOT NULL,
+  `giro_no` varchar(255) NOT NULL,
+  `giro_jumlah` decimal(15,2) NOT NULL,
+  `giro_pembelian_id` int(11) NOT NULL,
+  `giro_penjualan_id` int(11) NOT NULL,
+  `giro_rek_id_asal` int(11) NOT NULL,
+  `giro_rek_id_tujuan` int(11) NOT NULL,
+  `giro_rek_penjualan` varchar(100) NOT NULL,
+  `giro_rek_pembelian` varchar(100) NOT NULL,
+  `giro_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `is_delete` int(11) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`giro_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `keuangan_giro` 
+insert into `keuangan_giro` values
+(1, 5, 0, 4, 'asdad', 'In', 'Open', '2015-12-31', '2015-12-31', '0000-00-00', 'asdadsa', '1.00', 0, 0, 0, 5, '', '', '', '2015-12-31', 0, 0, '2015-12-31 07:31:20', 1);
+
+-- Table structure for table `keuangan_hutang` 
+DROP TABLE IF EXISTS `keuangan_hutang`;
+
+CREATE TABLE `keuangan_hutang` (
+  `hutang_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `hutang_tanggal` date NOT NULL,
+  `hutang_tempo` date NOT NULL,
+  `hutang_nama` varchar(100) NOT NULL,
+  `hutang_no` varchar(50) NOT NULL,
+  `hutang_jumlah` decimal(12,2) NOT NULL,
+  `hutang_bayar` decimal(12,2) NOT NULL,
+  `supplier_id` smallint(6) NOT NULL,
+  `pembelian_id` smallint(6) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`hutang_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `keuangan_hutang` 
+insert into `keuangan_hutang` values
+(1, '2015-12-31', '0000-00-00', 'Pembelian No PBP.20153112.0001', '', '4320000.00', '0.00', 0, 1, '2015-12-31 07:59:05', 1, 0, 1), 
+(2, '2015-12-31', '0000-00-00', 'Pembelian No PBP.20153112.0001', '', '4320000.00', '0.00', 0, 1, '2015-12-31 08:02:20', 1, 0, 1), 
+(3, '2015-12-31', '0000-00-00', 'Pembelian No PBP.20153112.0001', '', '4320000.00', '0.00', 8, 1, '2015-12-31 08:03:22', 1, 0, 1);
+
+-- Table structure for table `keuangan_piutang` 
+DROP TABLE IF EXISTS `keuangan_piutang`;
+
+CREATE TABLE `keuangan_piutang` (
+  `piutang_id` int(11) NOT NULL AUTO_INCREMENT,
+  `piutang_tanggal` date NOT NULL,
+  `piutang_tempo` varchar(256) NOT NULL,
+  `buku_besar_id` int(11) NOT NULL,
+  `piutang_status` varchar(256) NOT NULL,
+  `piutang_nota` varchar(256) NOT NULL,
+  `piutang_jumlah` varchar(256) NOT NULL,
+  `piutang_bayar` varchar(256) NOT NULL,
+  `pelanggan_id` int(11) NOT NULL,
+  `reff_id` int(11) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`piutang_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `keuangan_piutang` 
+insert into `keuangan_piutang` values
+(1, '2016-01-31', '10', 1, 'Proses', '2.PJ001', '1000', '0', 9, 1, '2016-01-01 02:06:47', 0, 0, 0);
+
+-- Table structure for table `keuangan_rekening` 
+DROP TABLE IF EXISTS `keuangan_rekening`;
+
+CREATE TABLE `keuangan_rekening` (
+  `rekening_id` int(11) NOT NULL AUTO_INCREMENT,
+  `akun_id` int(11) NOT NULL,
+  `data_rekening_id` smallint(6) NOT NULL,
+  `giro_id` smallint(6) NOT NULL,
+  `penjualan_id` smallint(6) NOT NULL,
+  `pembelian_id` smallint(6) NOT NULL,
+  `keuangan_id` smallint(6) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `is_rekening_giro` tinyint(1) NOT NULL,
+  `rekening_tanggal` date NOT NULL,
+  `rekening_nama` varchar(256) NOT NULL,
+  `rekening_jumlah` decimal(15,2) NOT NULL,
+  `rekening_id_asal` smallint(6) NOT NULL,
+  `rekening_id_tujuan` smallint(6) NOT NULL,
+  `rekening_penjualan` varchar(10) NOT NULL,
+  `rekening_pembelian` varchar(100) NOT NULL,
+  `rekening_jenis` varchar(256) NOT NULL,
+  `rekening_keterangan` varchar(255) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`rekening_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `keuangan_rekening` 
+insert into `keuangan_rekening` values
+(1, 0, 5, 0, 0, 0, 5, 4, 1, '2015-12-31', 'asdasd', '1.00', 0, 5, '', '', 'In', '', '2015-12-31', '2016-01-01 01:28:51', 1, 0, 1);
+
+-- Table structure for table `keuangan_saldo` 
+DROP TABLE IF EXISTS `keuangan_saldo`;
+
+CREATE TABLE `keuangan_saldo` (
+  `saldo_id` int(11) NOT NULL AUTO_INCREMENT,
+  `saldo_tempo` date NOT NULL,
+  `saldo_tanggal` date NOT NULL,
+  `akun_id` int(11) NOT NULL,
+  `saldo_nama` varchar(256) NOT NULL,
+  `saldo_jumlah` decimal(15,2) NOT NULL,
+  `saldo_bayar` decimal(15,2) NOT NULL,
+  `pemasok_id` int(11) NOT NULL,
+  `reff_id` int(11) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`saldo_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table structure for table `order_pembelian` 
+DROP TABLE IF EXISTS `order_pembelian`;
+
+CREATE TABLE `order_pembelian` (
+  `order_pembelian_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `user_id` smallint(6) NOT NULL,
+  `supplier_id` smallint(6) NOT NULL,
+  `order_pembelian_no` varchar(50) NOT NULL,
+  `order_pembelian_tanggal` date NOT NULL,
+  `order_pembelian_status` varchar(20) NOT NULL,
+  `order_pembelian_total` decimal(12,2) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`order_pembelian_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `order_pembelian` 
+insert into `order_pembelian` values
+(1, 0, 8, '2.OPBP.20153112.0001', '2015-12-31', 'Selesai', '10800000.00', '2015-12-31 07:35:12', 1, 0, 0);
+
+-- Table structure for table `order_pembelian_detail` 
+DROP TABLE IF EXISTS `order_pembelian_detail`;
+
+CREATE TABLE `order_pembelian_detail` (
+  `order_pembelian_detail_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `order_pembelian_id` smallint(6) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `konsumen_id` smallint(6) NOT NULL,
+  `user_id` smallint(6) NOT NULL,
+  `detail_satuan_id` smallint(6) NOT NULL,
+  `satuan_id` smallint(6) NOT NULL,
+  `order_pembelian_detail_jumlah` int(11) NOT NULL,
+  `order_pembelian_detail_harga` decimal(12,2) NOT NULL,
+  `order_pembelian_detail_harga_total` decimal(12,2) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`order_pembelian_detail_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `order_pembelian_detail` 
+insert into `order_pembelian_detail` values
+(1, 1, 4, 0, 0, 2, 0, 10, '500000.00', '5000000.00', '2015-12-31 07:33:45', 1, 0, 0), 
+(2, 1, 0, 0, 0, 4, 0, 10, '550000.00', '5500000.00', '2015-12-31 07:34:07', 1, 0, 0), 
+(3, 1, 4, 0, 0, 1, 0, 10, '30000.00', '300000.00', '2015-12-31 07:34:45', 1, 0, 0);
+
+-- Table structure for table `order_penjualan` 
+DROP TABLE IF EXISTS `order_penjualan`;
+
+CREATE TABLE `order_penjualan` (
+  `order_penjualan_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `lokasi_id` int(11) NOT NULL,
+  `pelanggan_id` smallint(6) NOT NULL,
+  `order_penjualan_no` varchar(100) NOT NULL,
+  `order_penjualan_tanggal` date NOT NULL,
+  `order_penjualan_total` decimal(15,2) NOT NULL,
+  `order_penjualan_status` varchar(50) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`order_penjualan_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table structure for table `order_penjualan_detail` 
+DROP TABLE IF EXISTS `order_penjualan_detail`;
+
+CREATE TABLE `order_penjualan_detail` (
+  `order_penjualan_detail_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `order_penjualan_id` smallint(6) NOT NULL,
+  `detail_satuan_id` smallint(6) NOT NULL,
+  `satuan_id` smallint(6) NOT NULL,
+  `order_penjualan_detail_jml` int(11) NOT NULL,
+  `order_penjualan_detail_harga` decimal(15,0) NOT NULL,
+  `order_penjualan_sub_total` decimal(15,2) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` int(11) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`order_penjualan_detail_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table structure for table `pembelian` 
+DROP TABLE IF EXISTS `pembelian`;
+
+CREATE TABLE `pembelian` (
+  `pembelian_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `order_pembelian_id` smallint(6) NOT NULL,
+  `pembelian_no` varchar(50) NOT NULL,
+  `pembelian_ongkos` decimal(14,2) NOT NULL,
+  `pembelian_disc_jenis` varchar(2) NOT NULL,
+  `pembelian_disc` float NOT NULL,
+  `pembelian_tanggal` date NOT NULL,
+  `user_id` smallint(6) NOT NULL,
+  `supplier_id` smallint(6) NOT NULL,
+  `pembelian_status` varchar(20) NOT NULL,
+  `pembelian_total` decimal(12,2) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`pembelian_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `pembelian` 
+insert into `pembelian` values
+(1, 1, 'PBP.20153112.0001', '100000.00', '%', '10', '2015-12-31', 0, 8, 'Selesai', '5300000.00', '2016-01-01 02:03:22', 1, 0, 0);
+
+-- Table structure for table `pembelian_detail` 
+DROP TABLE IF EXISTS `pembelian_detail`;
+
+CREATE TABLE `pembelian_detail` (
+  `pembelian_detail_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `order_pembelian_detail_id` smallint(6) NOT NULL,
+  `pembelian_id` smallint(6) NOT NULL,
+  `pembelian_detail_tanggal_terima` date NOT NULL,
+  `pembelian_detail_sopir` varchar(100) NOT NULL,
+  `pembelian_detail_mobil` varchar(100) NOT NULL,
+  `detail_satuan_id` smallint(6) NOT NULL,
+  `satuan_id` smallint(6) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `user_id` smallint(6) NOT NULL,
+  `pembelian_detail_jumlah` int(11) NOT NULL,
+  `pembelian_detail_harga` decimal(12,2) NOT NULL,
+  `pembelian_detail_harga_total` varchar(100) NOT NULL,
+  `pembelian_detail_disc_jenis` varchar(2) NOT NULL,
+  `pembelian_detail_disc` varchar(200) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_checked` tinyint(1) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`pembelian_detail_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `pembelian_detail` 
+insert into `pembelian_detail` values
+(1, 1, 1, '2015-12-31', 'Jaka', 'Pickup Bak B1231KL', 2, 14, 4, 0, 10, '500000.00', '5000000', '%', '10+0+0+0+0+0+0+0', '2016-01-01 01:48:36', 0, 0, 0, 0), 
+(2, 3, 1, '2015-12-31', 'Jaka', 'Pickup Bak B1231KL', 1, 7, 4, 0, 10, '30000.00', '300000', '%', '0+0+0+0+0+0+0+0', '2016-01-01 01:48:36', 0, 0, 0, 0);
+
+-- Table structure for table `pembelian_packing` 
+DROP TABLE IF EXISTS `pembelian_packing`;
+
+CREATE TABLE `pembelian_packing` (
+  `pembelian_packing_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pembelian_id` int(11) NOT NULL,
+  `pembelian_packing_nama` varchar(100) NOT NULL,
+  `pembelian_packing_ongkos` decimal(14,2) NOT NULL,
+  `pembelian_packing_keterangan` varchar(255) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` int(11) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`pembelian_packing_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `pembelian_packing` 
+insert into `pembelian_packing` values
+(1, 1, 'Koli 1', '100.00', '', '2015-12-31 07:48:46', 1, 0, 0);
+
+-- Table structure for table `pembelian_packing_detail` 
+DROP TABLE IF EXISTS `pembelian_packing_detail`;
+
+CREATE TABLE `pembelian_packing_detail` (
+  `pembelian_packing_detail_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `pembelian_detail_id` smallint(6) NOT NULL,
+  `pembelian_packing_id` smallint(6) NOT NULL,
+  `detail_satuan_id` smallint(6) NOT NULL,
+  `lokasi_id` smallint(6) NOT NULL,
+  `pembelian_packing_detail_jumlah` int(11) NOT NULL,
+  `pembelian_packing_detail_harga` decimal(12,2) NOT NULL,
+  `pembelian_packing_detail_harga_total` varchar(100) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_checked` tinyint(1) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`pembelian_packing_detail_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `pembelian_packing_detail` 
+insert into `pembelian_packing_detail` values
+(1, 1, 1, 0, 0, 10, '500000.00', '5000000', '2015-12-31 07:49:03', 1, 0, 0, 0), 
+(2, 2, 1, 0, 0, 10, '30000.00', '300000', '2015-12-31 07:49:10', 1, 0, 0, 0);
+
+-- Table structure for table `setting_akses_menu` 
+DROP TABLE IF EXISTS `setting_akses_menu`;
+
+CREATE TABLE `setting_akses_menu` (
+  `am_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `user_id` smallint(6) NOT NULL,
+  `dm_role` tinyint(1) NOT NULL,
+  `dm_role_aksi` varchar(10) NOT NULL,
+  `dm_user` tinyint(1) NOT NULL,
+  `dm_user_aksi` varchar(10) NOT NULL,
+  `dm_rekening` tinyint(1) NOT NULL,
+  `dm_rekening_aksi` varchar(255) NOT NULL,
+  `dm_rekening_debit` tinyint(1) NOT NULL,
+  `dm_rekening_debit_aksi` varchar(10) NOT NULL,
+  `dm_kas` tinyint(1) NOT NULL,
+  `dm_kas_aksi` varchar(10) NOT NULL,
+  `dm_pegawai` tinyint(1) NOT NULL,
+  `dm_pegawai_aksi` varchar(10) NOT NULL,
+  `dm_akses_menu` tinyint(1) NOT NULL,
+  `dm_akses_menu_aksi` varchar(10) NOT NULL,
+  `dm_akses_password` tinyint(1) NOT NULL,
+  `dm_akses_password_aksi` varchar(10) NOT NULL,
+  `dm_divisi` tinyint(1) NOT NULL,
+  `dm_divisi_aksi` varchar(10) NOT NULL,
+  `dm_supplier` tinyint(1) NOT NULL,
+  `dm_supplier_aksi` varchar(10) NOT NULL,
+  `dm_supplier_kategori` tinyint(1) NOT NULL,
+  `dm_supplier_kategori_aksi` varchar(10) NOT NULL,
+  `dm_pelanggan` tinyint(1) NOT NULL,
+  `dm_pelanggan_aksi` varchar(10) NOT NULL,
+  `dm_pelanggan_kategori` tinyint(1) NOT NULL,
+  `dm_pelanggan_kategori_aksi` varchar(10) NOT NULL,
+  `dm_produk` tinyint(1) NOT NULL,
+  `dm_produk_aksi` varchar(10) NOT NULL,
+  `dm_produk_kategori` tinyint(1) NOT NULL,
+  `dm_produk_kategori_aksi` varchar(10) NOT NULL,
+  `dm_produk_promo` tinyint(1) NOT NULL,
+  `dm_produk_promo_aksi` varchar(10) NOT NULL,
+  `dm_produk_paket` tinyint(1) NOT NULL,
+  `dm_produk_paket_aksi` varchar(10) NOT NULL,
+  `dm_lokasi` tinyint(1) NOT NULL,
+  `dm_lokasi_aksi` varchar(10) NOT NULL,
+  `dm_gudang` tinyint(1) NOT NULL,
+  `dm_gudang_aksi` varchar(10) NOT NULL,
+  `dm_akun` tinyint(1) NOT NULL,
+  `dm_akun_aksi` varchar(10) NOT NULL,
+  `dm_buku_besar` tinyint(1) NOT NULL,
+  `dm_buku_besar_aksi` varchar(10) NOT NULL,
+  `dm_jurnal` tinyint(1) NOT NULL,
+  `dm_jurnal_aksi` varchar(10) NOT NULL,
+  `dm_satuan` tinyint(1) NOT NULL,
+  `dm_satuan_aksi` varchar(10) NOT NULL,
+  `dm_produk_harga` tinyint(1) NOT NULL,
+  `dm_produk_harga_aksi` varchar(10) NOT NULL,
+  `dm_produk_harga_range` tinyint(1) NOT NULL,
+  `dm_produk_harga_range_aksi` varchar(10) NOT NULL,
+  `dm_cabang` tinyint(1) NOT NULL,
+  `dm_cabang_aksi` varchar(10) NOT NULL,
+  `dm_mobil` tinyint(1) NOT NULL,
+  `dm_mobil_aksi` varchar(10) NOT NULL,
+  `dm_coverage` tinyint(1) NOT NULL,
+  `dm_coverage_aksi` varchar(10) NOT NULL,
+  `dm_produk_diskon` tinyint(1) NOT NULL,
+  `dm_produk_diskon_aksi` varchar(10) NOT NULL,
+  `keu_cash` tinyint(1) NOT NULL,
+  `keu_hutang` tinyint(1) NOT NULL,
+  `keu_hutang_aksi` varchar(10) NOT NULL,
+  `keu_piutang` tinyint(1) NOT NULL,
+  `keu_piutang_aksi` varchar(10) NOT NULL,
+  `st_display` tinyint(1) NOT NULL,
+  `st_display_aksi` varchar(10) NOT NULL,
+  `st_opname` tinyint(1) NOT NULL,
+  `st_opname_aksi` varchar(10) NOT NULL,
+  `st_verifikasi_opname` tinyint(1) NOT NULL,
+  `st_verifikasi_opname_aksi` varchar(10) NOT NULL,
+  `st_mutasi` tinyint(1) NOT NULL,
+  `st_mutasi_aksi` varchar(10) NOT NULL,
+  `st_min_max` tinyint(1) NOT NULL,
+  `st_min_max_aksi` varchar(10) NOT NULL,
+  `st_history` tinyint(1) NOT NULL,
+  `st_history_aksi` varchar(10) NOT NULL,
+  `keu_cash_aksi` varchar(10) NOT NULL,
+  `keu_rekening` tinyint(1) NOT NULL,
+  `keu_rekening_aksi` varchar(10) NOT NULL,
+  `keu_giro` tinyint(1) NOT NULL,
+  `keu_giro_aksi` varchar(10) NOT NULL,
+  `keu_keuangan` tinyint(1) NOT NULL,
+  `keu_keuangan_aksi` varchar(10) NOT NULL,
+  `keu_cash_besar` tinyint(1) NOT NULL,
+  `keu_cash_besar_aksi` varchar(10) NOT NULL,
+  `keu_cash_kecil` tinyint(1) NOT NULL,
+  `keu_cash_kecil_aksi` varchar(10) NOT NULL,
+  `trs_pembelian_pesanan` tinyint(1) NOT NULL,
+  `trs_pembelian_pesanan_aksi` varchar(10) NOT NULL,
+  `trs_pembelian_persediaan` tinyint(1) NOT NULL,
+  `trs_pembelian_order` tinyint(1) NOT NULL,
+  `trs_pembelian_order_aksi` varchar(10) NOT NULL,
+  `trs_pembelian_persediaan_aksi` varchar(10) NOT NULL,
+  `trs_pembelian_retur` tinyint(1) NOT NULL,
+  `trs_pembelian_retur_aksi` varchar(10) NOT NULL,
+  `trs_in_delivery` tinyint(1) NOT NULL,
+  `trs_in_delivery_aksi` varchar(10) NOT NULL,
+  `trs_ex_delivery` tinyint(1) NOT NULL,
+  `trs_ex_delivery_aksi` varchar(10) NOT NULL,
+  `trs_penjualan` tinyint(1) NOT NULL,
+  `trs_penjualan_aksi` varchar(10) NOT NULL,
+  `trs_penjualan_managemen` tinyint(1) NOT NULL,
+  `trs_penjualan_managemen_aksi` varchar(10) NOT NULL,
+  `trs_penjualan_order` tinyint(1) NOT NULL,
+  `trs_penjualan_order_aksi` varchar(10) NOT NULL,
+  `trs_penjualan_retur` tinyint(1) NOT NULL,
+  `trs_penjualan_retur_aksi` varchar(10) NOT NULL,
+  `pg_backup` tinyint(1) NOT NULL,
+  `pg_backup_aksi` varchar(10) NOT NULL,
+  `pg_restore` tinyint(1) NOT NULL,
+  `pg_restore_aksi` varchar(10) NOT NULL,
+  `pg_profile` tinyint(1) NOT NULL,
+  `pg_profile_aksi` varchar(10) NOT NULL,
+  `pg_log` tinyint(1) NOT NULL,
+  `pg_printer` tinyint(1) NOT NULL,
+  `pg_printer_aksi` varchar(10) NOT NULL,
+  `last_update` timestamp NULL DEFAULT NULL,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`am_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `setting_akses_menu` 
+insert into `setting_akses_menu` values
+(1, 1, 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, 1, '1~1~1~1', '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, '1~1~1~1', 1, 1, '1~1~1~1', '0000-00-00 00:00:00', 0, 0, 0);
+
+-- Table structure for table `setting_akses_password` 
+DROP TABLE IF EXISTS `setting_akses_password`;
+
+CREATE TABLE `setting_akses_password` (
+  `akses_password_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `akses_password_menu` varchar(40) NOT NULL,
+  `akses_password_fungsi` varchar(40) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `last_update` timestamp NULL DEFAULT NULL,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`akses_password_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `setting_akses_password` 
+insert into `setting_akses_password` values
+(1, 'user', 'delete', 1, '0000-00-00 00:00:00', 0, 0, 0), 
+(2, 'verifikasi stok opname', 'verifikasi', 1, '0000-00-00 00:00:00', 0, 0, 0), 
+(3, 'penjualan', 'batal', 1, '0000-00-00 00:00:00', 0, 0, 0);
+
+-- Table structure for table `setting_nota` 
+DROP TABLE IF EXISTS `setting_nota`;
+
+CREATE TABLE `setting_nota` (
+  `nota_id` int(11) NOT NULL AUTO_INCREMENT,
+  `nota_nama` varchar(30) NOT NULL,
+  `profile_title` varchar(100) NOT NULL,
+  `profile_alamat` varchar(100) NOT NULL,
+  `profile_telepon` varchar(100) NOT NULL,
+  `profile_fax` varchar(100) NOT NULL,
+  `nota_keterangan` varchar(255) NOT NULL,
+  PRIMARY KEY (`nota_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `setting_nota` 
+insert into `setting_nota` values
+(1, '', 'SARI FOOD MANDIRI', '-', '-', '-', '');
+
+-- Table structure for table `setting_printer` 
+DROP TABLE IF EXISTS `setting_printer`;
+
+CREATE TABLE `setting_printer` (
+  `setting_printer_id` int(11) NOT NULL AUTO_INCREMENT,
+  `setting_printer_menu` varchar(50) NOT NULL,
+  `setting_printer_kertas` varchar(100) NOT NULL,
+  `setting_printer_ukuran` varchar(50) NOT NULL,
+  `setting_printer_keterangan` varchar(255) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`setting_printer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `setting_printer` 
+insert into `setting_printer` values
+(1, 'user', 'A4', '10x10', '', '2015-10-07 10:55:35', 0, 0, 1);
+
+-- Table structure for table `setting_profile` 
+DROP TABLE IF EXISTS `setting_profile`;
+
+CREATE TABLE `setting_profile` (
+  `profile_id` int(11) NOT NULL AUTO_INCREMENT,
+  `profile_title` varchar(30) NOT NULL,
+  `profile_logo` varchar(255) NOT NULL,
+  `profile_alamat` varchar(255) NOT NULL,
+  `profile_telepon` varchar(255) NOT NULL,
+  `profile_fax` varchar(255) NOT NULL,
+  `profile_version` varchar(5) NOT NULL,
+  `last_update` timestamp NULL DEFAULT NULL,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  PRIMARY KEY (`profile_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `setting_profile` 
+insert into `setting_profile` values
+(1, 'SARI FOOD MANDIRI', 'logo.png', 'JL Stadion Mini I No 5 Purwokerto', '0281 6571914', '0281 6571914', '0.1', '2015-12-18 08:30:39', 1, 0, 1);
+
+-- Table structure for table `stok_opname` 
+DROP TABLE IF EXISTS `stok_opname`;
+
+CREATE TABLE `stok_opname` (
+  `stok_opname_id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `stok_id` smallint(6) NOT NULL,
+  `stok_opname_good` float NOT NULL,
+  `stok_opname_transit` float NOT NULL,
+  `stok_opname_bad` float NOT NULL,
+  `stok_opname_hold` float NOT NULL,
+  `stok_maksimum` int(11) NOT NULL,
+  `stok_minimum` int(11) NOT NULL,
+  `stok_opname_status` varchar(15) NOT NULL,
+  `tgl_input` date NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` smallint(6) NOT NULL,
+  `is_delete` tinyint(4) NOT NULL,
+  `is_permanent` tinyint(4) NOT NULL,
+  PRIMARY KEY (`stok_opname_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+-- dumping data for table `stok_opname` 
+insert into `stok_opname` values
+(1, 8, '1', '0', '0', '0', 0, 0, 'sukses', '2015-12-31', '2016-01-01 01:08:19', 1, 1, 0), 
+(2, 8, '0', '0', '0', '0', 0, 0, 'sukses', '2015-12-31', '2016-01-01 01:09:00', 1, 1, 0);
+
+-- Table structure for table `transaksi_penjualan` 
+DROP TABLE IF EXISTS `transaksi_penjualan`;
+
+CREATE TABLE `transaksi_penjualan` (
+  `penjualan_id` int(11) NOT NULL AUTO_INCREMENT,
+  `penjualan_tanggal` datetime NOT NULL,
+  `pelanggan_id` int(11) NOT NULL,
+  `lokasi_id` int(11) NOT NULL,
+  `penjualan_no` varchar(100) NOT NULL,
+  `penjualan_disc_jenis` varchar(20) NOT NULL,
+  `penjualan_disc` varchar(10) NOT NULL,
+  `penjualan_tagihan_bruto` decimal(15,2) NOT NULL,
+  `penjualan_tagihan` decimal(15,2) NOT NULL,
+  `penjualan_bayar` decimal(15,2) NOT NULL,
+  `penjualan_kembalian` decimal(15,2) NOT NULL,
+  `penjualan_status` varchar(20) NOT NULL,
+  `penjualan_keterangan` varchar(255) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_user_id` int(11) NOT NULL,
+  PRIMARY KEY (`penjualan_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table structure for table `transaksi_penjualan_detail` 
+DROP TABLE IF EXISTS `transaksi_penjualan_detail`;
+
+CREATE TABLE `transaksi_penjualan_detail` (
+  `penjualan_detail_id` int(11) NOT NULL AUTO_INCREMENT,
+  `penjualan_id` int(11) NOT NULL,
+  `detail_satuan_id` int(11) NOT NULL,
+  `produk_harga_id` int(11) NOT NULL,
+  `penjualan_detail_jumlah` int(11) NOT NULL,
+  `penjualan_detail_harga` decimal(15,2) NOT NULL,
+  `penjualan_detail_disc` varchar(20) NOT NULL,
+  `penjualan_detail_harga_total` decimal(15,2) NOT NULL,
+  `is_delete` tinyint(1) NOT NULL,
+  `is_permanent` tinyint(1) NOT NULL,
+  `last_user_id` int(11) NOT NULL,
+  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`penjualan_detail_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+-- Table structure for table `transaksi_penjualan_hold` 
+DROP TABLE IF EXISTS `transaksi_penjualan_hold`;
+
+CREATE TABLE `transaksi_penjualan_hold` (
+  `penjualan_hold_id` int(11) NOT NULL AUTO_INCREMENT,
+  `penjualan_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`penjualan_hold_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
