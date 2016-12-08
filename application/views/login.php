@@ -61,5 +61,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <?php $this->load->view('common/footer'); ?>
         <script src="<?php echo base_url(); ?>include/js/bootstrap.min.js"></script>
+        tes
     </body>
 </html>
