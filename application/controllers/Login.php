@@ -13,32 +13,6 @@ class login extends CI_Controller {
 
         // Place your model here...
     }
-
-	 public function get_all_password_manager() {
-        $i = 1;
-        $ptn = '[';
-        $manager = $this->db->query('SELECT * FROM data_user u
-		join data_role a on a.role_id=u.role_id
-		WHERE role_nama ="Manager" and u.is_delete=0')->result();
-        if ($manager != null) {
-            foreach ($manager as $row) {
-                if ($i != count($manager))
-                    $ptn .= '"' . $row->user_password . '"' . ',';
-                else {
-                    $ptn .= '"' . $row->user_password . '"';
-                }
-                $i++;
-            }
-            $ptn .= ']';
-			$this->session->set_userdata("otorisasi",$ptn);
-			
-            return $ptn;
-        } else {
-		   $this->session->set_userdata("otorisasi",'');
-            return NULL;
-        }
-    }
-	
     public function set_tab() {
 		$this->session->set_userdata('tab',$_POST["tab"]);
 	}
@@ -53,7 +27,6 @@ class login extends CI_Controller {
         } else {
             if ($this->lib->check_login()) {
 			
-					$this->get_all_password_manager();
 					$this->lib->check_lokasi("Dashboard");           
 					$this->load->view('dashboard');
             } else {

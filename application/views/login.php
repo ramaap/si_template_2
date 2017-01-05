@@ -28,10 +28,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 if (_alert != "")
                     alertify.success(_alert);
             }
+			
+			function go_home()
+			{
+				window.location.replace("<?php echo site_url('front/home'); ?>");
+			}
         </script>
 
     </head>
-    <body style="background:#dcf8c6;background-repeat: no-repeat;background-position: center;">
+    <body style="background:#ffffff;background-repeat: no-repeat;background-position: center;">
    <!-- <body style="background-image:linear-gradient(#fff, #008543);background-repeat: no-repeat;background-position: center;">-->
         <div class="row">
             <div class="col-md-1"></div>
@@ -56,11 +61,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="text" name="username" class="form-control" placeholder="Username" required="" autofocus="">
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" name="password" class="form-control" placeholder="Password" required="">
-            <button class="btn btn-lg btn-success btn-block" type="submit">Login</button>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            <a onclick="go_home()" class="btn btn-lg btn-success btn-block">Pixa Home</a>
             <?php echo form_close(); ?>
         </div>
         <?php $this->load->view('common/footer'); ?>
         <script src="<?php echo base_url(); ?>include/js/bootstrap.min.js"></script>
-   
     </body>
 </html>

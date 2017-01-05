@@ -21,6 +21,21 @@ class lib {
             return TRUE;
         }
     }
+	
+	 function check_login_customer() {
+        $CI = & get_instance();
+        if ($CI->session->userdata('user_customer_id') == "") {
+			$user = $CI->data_user_customer->get_by_username_password($_POST['username'], md5($_POST['password']));
+            if ($user != null) {
+                $this->set_session_customer($user);
+                return TRUE;
+            } else {
+                return FALSE;
+            }
+        } else {
+            return TRUE;
+        }
+    }
 
     function set_session($user) {
         $CI = & get_instance();
@@ -31,6 +46,17 @@ class lib {
         $CI->load->model('data_user');
         
         $CI->data_user->update_last_login($user->user_id);
+    }
+	
+    function set_session_customer($user) {
+        $CI = & get_instance();
+        $CI->session->set_userdata('user_customer_id', $user->user_id);
+        $CI->session->set_userdata('role_id', $user->role_id);
+        $CI->session->set_userdata('role_nama', $user->role_nama);
+        $CI->session->set_userdata('user_name', $user->customer_nama);
+        $CI->load->model('data_user_customer');
+        
+        $CI->data_user_customer->update_last_login($user->user_id);
     }
 	
     function check_lokasi($akses,$menu="") {
@@ -68,22 +94,13 @@ class lib {
 			}
 		}	
     }
-
-    function check_stok($produk_harga_id) {
+	function check_session_customer() {
         $CI = & get_instance();
-        $CI->load->model('data_stok');
-		
-        if($CI->session->userdata('user_id') == '') {
-            redirect('login');
+        if($CI->session->userdata('user_customer_id') == '') {
+            redirect('front/login_customer');
         }
-		$stok = $CI->data_stok->cek_stok($produk_harga_id);
-		if($stok<=0)
-		{
-			return false;
-		}	
-		return true;
     }
-	
+
 	function check_pass($akses_password_menu='',$akses_password_fungsi='',$input_pass='') {
         $CI = & get_instance();
         $CI->load->model('setting_akses_password');
@@ -113,6 +130,12 @@ class lib {
         $CI = & get_instance();
         $CI->load->model('data_user');
         $CI->data_user->update_last_logout($CI->session->userdata('user_id'));
+        $CI->session->sess_destroy();
+    }
+    function logout_customer() {
+        $CI = & get_instance();
+        $CI->load->model('data_user_customer');
+        $CI->data_user_customer->update_last_logout($CI->session->userdata('user_customer_id'));
         $CI->session->sess_destroy();
     }
 	

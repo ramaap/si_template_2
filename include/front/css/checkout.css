@@ -1,0 +1,442 @@
+.h2, h2{
+    margin-top: 0px;
+}
+ul{
+    padding-left: 0px;
+}
+li{
+    list-style: none;
+}
+.stages{
+    border-top: 3px solid black;
+    max-width: 750px;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 120px;
+}
+.stage .round{    
+    padding: 16px 27px;
+    background: grey;
+    border-radius: 50px;
+    color: #00003f;
+    text-decoration: none;
+    font-size: 35px;
+}
+body.checkout-1 .stage.one .round{
+    background: #ffcf3e;
+}
+body.checkout-2 .stage.two .round{
+    background: #ffcf3e;
+}
+body.checkout-3 .stage.three .round{
+    background: #ffcf3e;
+}
+body.checkout-4 .stage.four .round{
+    background: #ffcf3e;
+}
+.stage a:hover .round,
+a:focus, a:hover{
+    text-decoration: none !important;
+
+}
+.stage {
+    float: left;
+    position: absolute;
+    top: -31px;
+}
+.stage .round-container{
+    width: 75px;
+    margin: 0 auto;
+}
+.stage >span{
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+}
+.stage.one{
+    left: -20px;
+}
+.stage.two{
+    left: 210px;
+}
+.stage.three{
+    right: 190px;
+}
+.stage.four{
+    right: -20px;
+}
+.stage.five{
+}
+.detail-product .image{
+    float: left;
+    width: 35%;
+}
+.detail-product .image img{
+    width: 100%;
+}
+.detail-product .detail{
+    float: left;
+    width: 45%;
+    margin-left: 40px;
+    margin-top: 80px;
+}
+.detail-product .detail .items {
+    line-height: 35px;
+    margin: 10px;
+}
+.detail-product .detail .items label{
+    min-width: 130px;
+}
+.detail-product .detail .items select{
+    float: right;
+    min-width: 360px;
+    height: 40px;
+}
+.detail-product .detail button{
+    margin-left: 145px;
+    background: #ffcf3e;
+    padding: 10px 40px 10px 10px;
+    border: none;
+}
+.detail-product .detail button span{
+    font-weight: bold;
+}
+.detail-product .detail .upload {
+    margin: 10px;
+}
+.detail-product .detail .upload>div{
+    line-height: 35px;
+}
+.detail-product .detail .upload label,
+.detail-product .detail .upload form{
+    float: left;
+    min-width: 130px;
+}
+
+/*checkout-pembayaran*/
+.cart-checkout .lanjutkan{
+    cursor: pointer;
+    background: #ffcf3e;
+    position: absolute;
+    width: 100px;
+    padding: 8px 11px;
+    bottom: -16px;
+    right: 13px;
+}
+.cart-checkout .pembayaran .lanjutkan{
+    width: 180px;
+}
+.cart-checkout .login,
+.cart-checkout .cart-container,
+.cart-checkout .shipping,
+.cart-checkout .billing,
+.cart-checkout .pembayaran{
+    border: 1px solid #ffcf3e;
+    padding: 40px;
+    position: relative;
+    margin-bottom: 40px;
+}
+.cart-checkout .head{
+    background: #385379;
+    line-height: 60px;
+    text-align: center;
+}
+.cart-checkout .head span{
+    font-size: 30px;
+    color: white;
+}
+.cart-checkout .cart-container{
+    max-width: 510px;
+    margin: 20px auto;
+}
+.cart-checkout .cart-container label{
+    min-width: 130px;
+}
+.cart-checkout .cart-container .total strong{
+    font-size: 18px;
+}
+.cart-checkout .cart-container ul{
+    padding: 0;
+}
+.cart-checkout .cart-container ul li{
+    list-style: none;
+}
+.cart-checkout .cart-container ul li label{
+    min-width: 130px;
+}
+.cart-checkout .cart-container .separator{
+    min-width: 140px;
+    border-top: 2px solid #385379;
+    margin: 20px 0px;
+}
+
+/*login start*/
+.cart-checkout .login .left{
+    float: left;
+    width: 49%;
+    padding: 20px;
+}
+.cart-checkout .login .left h2{
+    margin-top: 0px;
+}
+.cart-checkout .login .left input{
+    width: 96%;
+    height: 40px;
+    border-radius: 6px;
+    border: 1px solid black;
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.cart-checkout .login .left .button-login,
+.cart-checkout .login .left .button-signup{
+    float: left;
+}
+.cart-checkout .login .left button{
+    height: 50px;
+    min-width: 220px;
+    background: grey;
+    border: none;
+    margin-right: 18px;
+}
+.cart-checkout .login .left span{
+    color: white;
+}
+.cart-checkout .login .left .button-signup button{
+    background: #9e9e9e;
+}
+.cart-checkout .login .left .facebook{
+    max-width: 458px;
+    margin-top: 20px;
+}
+.cart-checkout .login .left .facebook p{
+    text-align: center;
+}
+.cart-checkout .login .left .facebook .button-facebook button{
+    width: 100%;
+    background: #385379;
+}
+.cart-checkout .login .separator{
+    height: 353px;
+    float: left;
+    border: 1px solid grey;
+}
+.cart-checkout .login .right{
+    float: left;
+    width: 50%;
+    padding: 40px;
+    padding-top: 140px;
+}
+.cart-checkout .login .right .button-quick div{
+    width: 220px;
+    margin: 0 auto;
+}
+.cart-checkout .login .right .button-quick button{
+    height: 50px;
+    min-width: 220px;
+    background: #385379;
+    border: none;
+    margin-right: 18px;
+}
+.cart-checkout .login .right .button-quick button span{
+    color: white;
+}
+.cart-checkout .login .right .button-quick p{
+    text-align: center;
+    margin-top: 20px;
+}
+
+/*shipping - billing start */
+.cart-checkout .shipping li,
+.cart-checkout .billing li{
+    line-height: 40px;
+    margin-bottom: 10px;
+}
+.cart-checkout .shipping label,
+.cart-checkout .billing label{
+    min-width: 200px;
+}
+.cart-checkout .shipping input,
+.cart-checkout .billing input{
+    width: 60%;
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding: 0px 10px;
+}
+.cart-checkout .shipping textarea,
+.cart-checkout .billing textarea{
+    resize: none;
+    width: 60%;
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding: 0px 10px;
+}
+.cart-checkout .shipping select,
+.cart-checkout .billing select{
+    width: 60%;
+    border-radius: 8px;
+    border: 1px solid grey;
+    padding: 0px 10px;
+    height: 40px;
+}
+.cart-checkout .billing .checkbox{
+    width: auto;
+    margin-bottom: 20px;
+    margin-right: 10px;
+}
+
+/*pembayaran start*/
+.cart-checkout .pembayaran .left,
+.cart-checkout .pembayaran .right{
+    float: left;
+    width: 50%;
+}
+.cart-checkout .pembayaran .bank img{
+    width: 20%;
+}
+.cart-checkout .pembayaran .bank p{
+    margin-bottom: 0px;
+}
+.cart-checkout .pembayaran .left .shipping-billing{
+    background: #cccccc;
+    padding: 20px;
+    margin-top: 20px;
+}
+.cart-checkout .pembayaran .left .shipping-billing h3{
+    margin-top: 0px;
+    font-size: 16px;
+    font-weight: bold;
+    float: left;
+    margin-right: 10px;
+}
+.cart-checkout .pembayaran .left .shipping-billing a{
+    float: left;
+}
+.cart-checkout .pembayaran .left .shipping-billing p{
+    margin-bottom: 0px;
+}
+.cart-checkout .pembayaran .left .shipping-billing .left,
+.cart-checkout .pembayaran .left .shipping-billing .right{
+    width: 48%;
+    float: left;
+}
+
+/*start of checkout confirm payment*/
+body.checkout-3 .cart-checkout>.cart-container,
+body.checkout-3 .login,
+body.checkout-3 .shipping,
+body.checkout-3 .billing{
+    padding: 0px;
+    max-width: none;
+    border: none;
+}
+body.checkout-3 .cart-checkout>.cart-container .container,
+body.checkout-3 .login .container,
+body.checkout-3 .shipping .container,
+body.checkout-3 .billing .container{
+    border: 1px solid #ffcf3e;
+    padding: 30px;
+    max-width: 550px;
+    float: right;
+}
+body.checkout-3 .cart-checkout .cart-container .left,
+body.checkout-3 .cart-checkout .cart-container .right,
+body.checkout-3 .cart-checkout .login .left,
+body.checkout-3 .cart-checkout .login .right{
+    float: left;
+    width: auto;
+    margin-right: 20px;
+}
+body.checkout-3 .cart-checkout .cart-container .left,
+body.checkout-3 .cart-checkout .login .left{
+    min-width: 80px;
+}
+
+body.checkout-3 .cart-checkout .cart-container ul li label{
+    min-width: 77px;
+}
+body.checkout-3 .h2, h2{
+    font-size: 19px;
+    text-transform: uppercase;
+}
+body.checkout-3 .cart-checkout .cart-container .left h2{
+    line-height: 44px;
+}
+
+body.checkout-3 .cart-checkout .login .right,
+body.checkout-3 .cart-checkout .login .left{
+    padding: 0px;
+}
+
+/*success start*/
+body.checkout-4 h3,
+body.checkout-4 p{
+    text-align: center;
+}
+body.checkout-4 .bx-wrapper p{
+    text-align: left;
+}
+body.checkout-4 .image div.image-container{
+    width: 610px;
+    margin: 0 auto;
+}
+body.checkout-4 .image img{
+    width: 100%;
+}
+body.checkout-4 .pembayaran{
+    margin-top: 40px;
+    padding: 0px;
+}
+body.checkout-4 .pembayaran .head{
+    border-bottom: 1px solid #ffcf3e;
+    background: transparent;
+}
+body.checkout-4 .pembayaran .container{
+    padding:40px;
+}
+body.checkout-4 .pembayaran .container .left strong{
+    float: left;
+    font-size: 35px;
+    padding: 20px;
+    padding-left: 150px;
+}
+body.checkout-4 .pembayaran .container .left p{
+    float: right;
+    line-height: 80px;
+}
+body.checkout-4 .pembayaran .container .right .bank{
+    width: 158px;
+    margin: 0 auto;
+}
+body.checkout-4 .pembayaran .container .right .bank img{
+    width: 100%;
+}
+body.checkout-4 .confirm-alert {
+    width: 60%;
+    margin: 0 auto;
+    background: #385379;
+    padding: 20px;
+}
+body.checkout-4 .confirm-alert p{
+    margin: 0px;
+    color: white;
+}
+body.checkout-4 .etc .button-payed{
+    width: 172px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+body.checkout-4 .etc .button-payed span{
+    padding: 10px 10px;
+    background: #385379;
+    color: white;
+}
+body.checkout-4 .etc .button-back{
+    width: 148px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+body.checkout-4 .etc .button-back span{
+    padding: 10px 10px;
+    background: #ffcf3e;
+    color: rgb(96, 125, 139);
+}

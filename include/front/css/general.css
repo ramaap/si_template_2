@@ -1,0 +1,236 @@
+.clear{
+	clear:both;
+}
+@font-face {
+    font-family: 'diavlo-black';
+    src: url(fonts/Diavlo_BLACK_II_37.otf);
+}
+@font-face {
+    font-family: 'diavlo-bold';
+    src: url(fonts/Diavlo_BOLD_II_37.otf);
+}
+@font-face {
+    font-family: 'diavlo-book';
+    src: url(fonts/Diavlo_BOOK_II_37.otf);
+}
+@font-face {
+    font-family: 'diavlo-light';
+    src: url(fonts/Diavlo_LIGHT_II_37.otf);
+}
+@font-face {
+    font-family: 'diavlo-medium';
+    src: url(fonts/Diavlo_MEDIUM_II_37.otf);
+}
+@font-face {
+    font-family: 'harmonia-black';
+    src: url(fonts/HarmoniaSansStd-Black.otf);
+}
+@font-face {
+    font-family: 'harmonia-bold';
+    src: url(fonts/HarmoniaSansStd-Bold.otf);
+}
+@font-face {
+    font-family: 'harmonia-light';
+    src: url(fonts/HarmoniaSansStd-Light.otf);
+}
+@font-face {
+    font-family: 'lobster';
+    src: url(fonts/Lobster 1.4.otf);
+}
+@font-face {
+    font-family: 'harmonia-regular';
+    src: url(fonts/HarmoniaSansStd-Regular.otf);
+}
+
+strong,th,label{
+    font-family: 'harmonia-bold';
+    color: #9E9E9E;
+}
+p,td,select,h3,h2{
+    font-family: 'harmonia-light';
+    color: #9E9E9E;
+}
+span{
+    font-family: 'harmonia-light';
+    color: black;
+}
+
+/*Header	*/
+header .page-header-container{
+	position: relative;
+	max-width: 100%;
+	margin: 0 auto;
+}
+header .page-header-container div.logo{
+	width: 20%;
+	float: left;
+}
+header .page-header-container div.logo img{
+	width: 100%;
+}
+header .page-header-container div.menu-nav{
+	float: left;
+	margin-left: 50px;
+    margin-top: 29px;
+}
+header .page-header-container div.menu-nav li{    
+	list-style: none;
+    display: inline;
+    margin: 20px;
+    line-height: 50px;
+    font-size: 24px;
+}
+header .page-header-container div.menu-nav li a{
+	text-decoration: none;
+    font-family: 'harmonia-light';
+    color: #9E9E9E;
+}
+header .page-header-container div.menu-action{
+    float: right;
+    max-width: 200px;
+}
+header .page-header-container div.menu-action>div{
+	float: left;
+}
+header .page-header-container div.menu-action .login{    
+	line-height: 30px;
+    margin-top: 40px;
+    font-family: 'harmonia-black';
+}
+header .page-header-container div.menu-action .login a{
+	font-size: 22px;
+	text-decoration: none;
+    color: black;
+}
+header .page-header-container div.menu-action .separator{
+	height: 70px;
+	width: 2px;
+	background: black;
+    margin: 23px 18px;
+}
+header .page-header-container div.menu-action div.cart{
+	float: left;    
+	max-width: 100px;
+	position: relative;
+    margin-top: 17px;
+}
+header .page-header-container div.menu-action div.cart>a{
+    font-family: 'harmonia-light';
+    color: black;
+}
+header .page-header-container div.menu-action div.cart img{
+	width: 100%;
+}
+header .page-header-container div.menu-action div.cart .counter{
+	position: absolute;
+	right: 44%;
+	top: 30%;
+    font-size: 20px;
+}
+/*Header end*/
+
+/*Footer*/
+footer{    
+	background: #404041;
+	padding: 20px;
+    margin-top: 60px;
+}
+footer .footer-container{
+	max-width: 1200px;
+	margin: 0px auto;
+}
+footer .footer-container>div{
+	float: left;
+}
+footer .footer-container .separator{
+	width: 3px;
+    height: 100px;
+    background: white;
+	margin: 67px 20px;
+	margin-bottom: 0px;
+}
+footer .footer-container .logo-alamat{
+	width: 33%;
+}
+footer .footer-container .logo-alamat img{
+	width: 100%;
+}
+footer .footer-container .contact-us{
+	margin-top: 37px;
+	margin-left: 50px;
+	margin-right: 50px;
+} 
+footer .footer-container .contact-us .social{
+	position: relative;
+}
+footer .footer-container .contact-us .social em{
+	background-image: url('../images/footer/social.png');
+	background-position: 0px 0;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	display: block;
+	height: 30px;
+	width: 30px;
+	margin-top: 13px;
+	position: relative;
+	left: 0px;
+	top: 0px;
+	background-size: 65px;
+	float: left;
+}
+footer .footer-container .contact-us .social em.facebook{
+	background-position: -33px 0;
+}
+footer .footer-container .contact-us ul {
+	padding-left: 0px;
+}
+footer .footer-container .contact-us ul li{
+	list-style: none;
+    font-family: 'harmonia-light';
+    color: rgb(207, 207, 207);
+}
+footer .footer-container .contact-us ul li#email a{
+    font-family: 'harmonia-light';
+    color: rgb(207, 207, 207);
+}
+footer .footer-container .contact-us ul li em{
+	background-image: url('../images/footer/contact.png');
+	background-position: -6px 0;
+	background-repeat: no-repeat;
+	overflow: hidden;
+	display: block;
+	height: 20px;
+	width: 20px;
+	position: relative;
+	left: 0px;
+	top: 0px;
+	background-size: 29px;
+	float: left;
+	margin-right: 5px;
+}
+footer .footer-container .contact-us ul li#wa em{    
+	background-position: -6px -23px;
+}
+footer .footer-container .contact-us ul li#bbm em{   
+	background-position: -6px -46px;
+}
+footer .footer-container .contact-us ul li#email em{    
+	background-position: -6px -72px;
+}
+footer .footer-container .menu-footer{
+    margin-top: 75px;
+}
+footer .footer-container .menu-footer .menu{
+	float: left;
+	margin-right: 30px;
+}
+footer .footer-container .menu-footer .menu li{
+	list-style: none;
+}
+footer .footer-container .menu-footer .menu li a{
+	color: white;
+	text-decoration: none;
+    font-family: 'harmonia-light';
+    color: rgb(207, 207, 207);
+}
+/*FOoter end*/

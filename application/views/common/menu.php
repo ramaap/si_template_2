@@ -56,16 +56,28 @@ function pembayaran () {
 									?>
 									<li <?php echo $hidden; ?>><a class="menu" href="<?php echo site_url("data/users/show"); ?>"><i class="fa fa-user fa-fw"></i>&nbsp;&nbsp;Data User</a></li>
 									<?php
-									$hidden = 'hidden';
-									if ($akses->result() != null)
-										$hidden = ($akses->row()->dm_akses_menu == 0) ? 'hidden' : '';
+									// $hidden = 'hidden';
+									// if ($akses->result() != null)
+										// $hidden = ($akses->row()->dm_akses_menu == 0) ? 'hidden' : '';
 									?>
-									<li <?php echo $hidden; ?>><a class="menu" href="<?php echo site_url("data/akses_menu/show"); ?>"><i class="fa fa-user-times fa-fw"></i>&nbsp;&nbsp;Setting Akses Menu</a></li>
+									<!--li <?php //echo $hidden; ?>><a class="menu" href="<?php //echo site_url("data/akses_menu/show"); ?>"><i class="fa fa-user-times fa-fw"></i>&nbsp;&nbsp;Setting Akses Menu</a></li-->
 									
+								</ul>
+						</li>
+						<li class="dropdown-submenu">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" ><i class="fa fa-fw fa-tags"></i>&nbsp;&nbsp;Data Produk</a>
+								<ul class="dropdown-menu">
+									<li><a class="menu" href="<?php echo site_url("data/kategori_produk/show"); ?>"><i class="fa fa-list-ul fa-fw"></i>&nbsp;&nbsp;Kategori Produk</a></li>
+							
+									<li><a class="menu" href="<?php echo site_url("data/produk/show"); ?>"><i class="fa fa-tags fa-fw"></i>&nbsp;&nbsp;Produk</a></li>
 								</ul>
 						</li>
                     </ul>
                 </li>
+                <li class=""><a  class="menu" href="<?php echo site_url("data/customer/show"); ?>"><i class="fa fa-fw fa-users"></i>&nbsp;&nbsp;Pengelolaan Member</a></li>
+                <li class=""><a  class="menu" href="<?php echo site_url("data/customer/show"); ?>"><i class="fa fa-fw fa-list-ol"></i>&nbsp;&nbsp;Pengelolaan Order</a></li>
+                <li class=""><a  class="menu" href="<?php echo site_url("data/customer/show"); ?>"><i class="fa fa-fw fa-list-ol"></i>&nbsp;&nbsp;Pengelolaan Custom Order</a></li>
+                <li class=""><a  class="menu" href="<?php echo site_url("data/customer/show"); ?>"><i class="fa fa-fw fa-file"></i>&nbsp;&nbsp;Laporan</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-fw fa-gear"></i>&nbsp;&nbsp;Pengaturan&nbsp;<span class="caret"></span>

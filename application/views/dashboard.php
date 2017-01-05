@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<?php
 	$profile = $this->data_profile->get_all();
 				?>
-    <body style="background:#dcf8c6;background-repeat: no-repeat;background-position: center;">
+    <body style="background:#ffffff;background-repeat: no-repeat;background-position: center;">
         <?php $this->load->view('common/menu'); ?>
        
         <div id="container">

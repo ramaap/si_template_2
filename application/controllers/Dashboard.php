@@ -27,6 +27,6 @@ class dashboard extends CI_Controller {
         $data['status'] = '';
         $this->lib->log("Lihat");
         // $this->load->view('dashboard', $data);
-        $this->load->view('dashboard_tab', $data);
+        $this->load->view('dashboard', $data);
     }
 }

@@ -1,0 +1,106 @@
+/*general*/
+img{
+	width: 100%;
+}
+.carousel-control.left, .carousel-control.right{
+	background-image: none;
+}
+.main.container #ourproduct h2{
+    width: 305px;
+    margin: 0 auto;
+    padding: 5px 20px;
+    border: 1px solid #9E9E9E;
+    font-size: 40px;
+    font-family: 'harmonia-light';
+    color: #9E9E9E;
+}
+
+/*catalog*/
+body.catalog footer{
+	margin-top: 0px;
+}
+body.catalog  .ourproduct-container{
+    background: #ffcf3e;
+    margin-top: 25px;
+}
+body.catalog .ourproduct-container .row{
+	padding: 40px;
+}
+body.catalog .ourproduct-container .row .image-container p{
+    text-align: center;
+    width: 200px;
+    background: white;
+    padding: 6px 0px;
+    margin: 20px auto;
+    font-family: 'harmonia-light';
+    color: #9E9E9E;
+}
+
+
+/*product detail*/
+
+body.product-detail .main.container #ourproduct h2{
+    width: 666px;
+}
+body.product-detail .main.container .ourproduct-container{
+    margin-top: 40px;
+}
+body.product-detail .main.container .side {
+    position: relative;
+    width: 48%;
+    margin: 10px;
+    float: left;
+}
+body.product-detail .main.container .side .images{
+    width: 52%;
+    float: left;
+    margin-right: 20px;
+}
+body.product-detail .main.container .side .info-action{
+    width: 40%;
+    float: left;
+    position: relative;
+    padding-top: 30px;
+}
+body.product-detail .main.container .side .info-action button{
+    position: absolute;
+    bottom: 0;
+    background: #ffcf3e;
+    padding: 10px 40px 10px 10px;
+    border: none;
+}
+body.product-detail .main.container .side .info-action button span{
+	text-transform: uppercase;
+	font-weight: bold;
+}
+body.product-detail .main.container .different {
+    position: relative;
+    border: 1px solid black;
+    padding: 60px;
+    margin-top: 80px;
+
+}
+body.product-detail .main.container #ourproduct .different h2{
+    position: absolute;
+    top: -30px;
+    left: 395px;
+    background: white;
+    width: 385px;
+}
+body.product-detail .main.container .different table,
+body.product-detail .main.container .different table td,
+body.product-detail .main.container .different table th{
+	border: 5px solid white;
+}
+body.product-detail .main.container .different table td,
+body.product-detail .main.container .different table th{
+    height: 100px;
+    min-width: 150px;
+    text-align: center;
+}
+body.product-detail .main.container .different table .colored{
+    background: #ffcf3e;
+    font-weight: bold;
+    font-family: 'harmonia-bold';
+    color: grey;
+}
